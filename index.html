@@ -1,0 +1,68 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Filiánek – pracovní náhled</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Nunito:wght@400;700;800&display=swap">
+<style>
+/* Rozcestník náhledu: jeden sloupec, každý web jako řádek s barvou své značky */
+:root{
+  --bg:#FFF9EF; --surface:#FFFFFF; --ink:#1D2B53; --soft:#4A5677; --rule:#EFE6D6; --focus:#1468A0;
+  --f-head:"Poppins","Segoe UI",system-ui,sans-serif; --f-body:"Nunito","Segoe UI",system-ui,sans-serif;
+  --c-filianek:#D8343A; --c-balet:#B73468; --c-skolka:#7A6200; --c-filia:#0077B6; --c-spicky:#1B263B;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#141A2E; --surface:#1D2540; --ink:#F2F4FA; --soft:#B9C1D9; --rule:#2C3657; --focus:#8EC5F0;
+  --c-filianek:#FF8A8E; --c-balet:#FF9CC4; --c-skolka:#FFD66B; --c-filia:#6CCBF0; --c-spicky:#AFC0DA; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#141A2E; --surface:#1D2540; --ink:#F2F4FA; --soft:#B9C1D9; --rule:#2C3657; --focus:#8EC5F0;
+  --c-filianek:#FF8A8E; --c-balet:#FF9CC4; --c-skolka:#FFD66B; --c-filia:#6CCBF0; --c-spicky:#AFC0DA; color-scheme:dark}
+body{background:var(--bg);color:var(--ink);font:400 1rem/1.55 var(--f-body)}
+.page{max-width:760px;margin:0 auto;padding-block:clamp(24px,5vw,56px);padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:grid;gap:28px}
+h1{font:700 clamp(1.8rem,1.3rem + 2vw,2.6rem)/1.1 var(--f-head);letter-spacing:-.02em;margin:0;text-wrap:balance}
+.lead{margin:8px 0 0;color:var(--soft);max-width:60ch}
+.sites{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.sites a{display:grid;grid-template-columns:10px minmax(0,1fr) auto;gap:16px;align-items:center;padding:16px 18px;background:var(--surface);border:1px solid var(--rule);border-radius:16px;color:var(--ink);text-decoration:none}
+.sites a:hover{border-color:currentColor}
+.sites a:focus-visible{outline:3px solid var(--focus);outline-offset:3px}
+.sw{width:10px;align-self:stretch;border-radius:6px;background:var(--c)}
+.sites b{display:block;font:600 1.12rem/1.25 var(--f-head)}
+.sites span.d{display:block;color:var(--soft);font-size:.95rem;min-width:0}
+.go{font:800 .8rem/1 var(--f-body);letter-spacing:.06em;text-transform:uppercase;color:var(--c)}
+.notes{background:var(--surface);border:1px solid var(--rule);border-radius:16px;padding:18px 20px}
+.notes h2{font:600 1.1rem/1.3 var(--f-head);margin:0 0 8px}
+.notes ul{margin:0;padding-left:20px;display:grid;gap:6px;color:var(--soft)}
+.meta{color:var(--soft);font-size:.9rem;font-variant-numeric:tabular-nums}
+</style>
+
+<main class="page">
+  <header>
+    <h1>Filiánek – pracovní náhled</h1>
+    <p class="lead">Aktuální pracovní verze všech pěti webů rodiny Filiánek k nezávislé kontrole. Veřejné weby ani dřívější náhledy tímto nejsou nahrazené.</p>
+  </header>
+
+  <ul class="sites">
+    <li><a href="filianek/index.html" style="--c:var(--c-filianek)"><i class="sw" aria-hidden="true"></i><span><b>Filiánek</b><span class="d">Hlavní web: Pro děti, Pro dospělé, Pro seniory, Pro školky a školy, aktuality, kontakt</span></span><span class="go">Otevřít</span></a></li>
+    <li><a href="balet/index.html" style="--c:var(--c-balet)"><i class="sw" aria-hidden="true"></i><span><b>Baletní škola Filiánek</b><span class="d">Samostatný web baletu: lekce, ceník, přihláška</span></span><span class="go">Otevřít</span></a></li>
+    <li><a href="skolka/index.html" style="--c:var(--c-skolka)"><i class="sw" aria-hidden="true"></i><span><b>Dětská skupina Školka Filiánek</b><span class="d">Samostatný web školky: program, přijetí, pro rodiče, tým</span></span><span class="go">Otevřít</span></a></li>
+    <li><a href="filia/index.html" style="--c:var(--c-filia)"><i class="sw" aria-hidden="true"></i><span><b>Filia</b><span class="d">Samostatná organizace FILIA KLUB s.r.o.: plavání dětí a solná jeskyně</span></span><span class="go">Otevřít</span></a></li>
+    <li><a href="naspickach/index.html" style="--c:var(--c-spicky)"><i class="sw" aria-hidden="true"></i><span><b>Na špičkách</b><span class="d">Mezinárodní baletní soutěž: archiv ročníku 2026, pravidla, výsledky</span></span><span class="go">Otevřít</span></a></li>
+    <li><a href="varianty/pro-seniory-hero.html" style="--c:#532B88"><i class="sw" aria-hidden="true"></i><span><b>Varianta: Pro seniory podle předlohy</b><span class="d">Pracovní varianta první obrazovky podle předlohy, výtvarně neschválená: desktop, tablet a mobil.</span></span><span class="go">Otevřít</span></a></li>
+    <li><a href="varianty/pro-seniory-hero.html#tech" style="--c:#532B88"><i class="sw" aria-hidden="true"></i><span><b>Varianta Pro seniory – technické srovnání</b><span class="d">Totéž s označenými místy chybějící ilustrace levandule (na desktopu).</span></span><span class="go">Otevřít</span></a></li>
+    <li><a href="varianty/pro-seniory-hero.html#foto=b" style="--c:#532B88"><i class="sw" aria-hidden="true"></i><span><b>Varianta Pro seniory – alternativní fotka</b><span class="d">Stejná obrazovka se skutečným snímkem cvičení na židlích ve světlém sále.</span></span><span class="go">Otevřít</span></a></li>
+  </ul>
+
+  <section class="notes" aria-labelledby="pozn">
+    <h2 id="pozn">Pro kontrolu</h2>
+    <ul>
+      <li>Odkazy mezi weby vedou uvnitř tohoto náhledu. Odkazy na Auksys, PDF dokumenty a současné weby se otevírají v novém okně na skutečných adresách.</li>
+      <li>Formuláře jsou demonstrační a nic neodesílají.</li>
+      <li>Telefonní a e-mailové odkazy uvnitř náhledu na claude.ai nemusí na každém zařízení otevřít volání nebo poštu. Čísla a adresy jsou na stránkách vypsané.</li>
+      <li>Písma se načítají z Google Fonts, pro přesný vzhled je potřeba připojení k internetu.</li>
+    </ul>
+  </section>
+
+  <p class="meta">Verze 1e4b031 z pracovní větve claude/plugin-marketplace-pbakaus-impeccable-b3i8l5.</p>
+</main>
+
+</body></html>
