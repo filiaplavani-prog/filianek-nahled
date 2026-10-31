@@ -1,0 +1,364 @@
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Fotogalerie – Na špičkách Brno</title>
+<meta name="description" content="Fotografie ze soutěže Na špičkách Brno 2015–2026.">
+<meta name="theme-color" content="#0D1B2A">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Montserrat:wght@400;500;600;700&display=swap">
+<style>:root{--bg:#0D1B2A;--surf:#1B263B;--ink:#E0E1DD;--ink-soft:#B8C4D6;--head:#FFFFFF;--line:#2C3E58;--link:#E0E1DD;--steel-l:#9DB0C9;--focus:#E0E1DD;--hdr-bg:rgba(13,27,42,.94);--hdr-line:#24344D;--dd-bg:#0F1F31;--nav-font:600 .82rem/1 'Montserrat',sans-serif;--nav-ink:#E0E1DD;--nav-ink-h:#FFFFFF;--nav-hover:#24344D;--btn-font:600 .82rem/1 'Montserrat',sans-serif;--btn-bg:#E0E1DD;--btn-fg:#0D1B2A;--btn-bg-h:#FFFFFF;--btn-fg-h:#0D1B2A;--ghost-fg:#E0E1DD;--ghost-line:#778DA9;--ghost-bg-h:#E0E1DD;--ghost-fg-h:#0D1B2A}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;scroll-padding-top:96px}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 1.0625rem/1.62 var(--f-body);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{max-width:100%;height:auto;display:block}
+h1,h2,h3{font-family:var(--f-head);color:var(--head);margin:0 0 .5em;line-height:1.15}
+p{margin:0 0 1em}
+a{color:var(--link)}
+.wrap{max-width:1240px;margin-inline:auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.skip{position:absolute;left:-999px;top:8px;background:#fff;color:#000;padding:10px 16px;border-radius:12px;z-index:200}
+.skip:focus{left:16px}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+:focus-visible{outline:3px solid var(--focus);outline-offset:3px;border-radius:6px}
+.ico{width:1.25em;height:1.25em;flex:none}
+/* hlavička */
+.hdr{position:sticky;top:0;z-index:60;background:var(--hdr-bg);backdrop-filter:saturate(1.4) blur(10px);border-bottom:1px solid var(--hdr-line)}
+.hdr .bar{display:flex;align-items:center;gap:18px;min-height:78px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--head);min-width:0}
+.nav{margin-left:auto}
+.nav>ul{list-style:none;margin:0;padding:0;display:flex;align-items:center;gap:2px}
+.nav a,.dd-btn{display:flex;align-items:center;gap:6px;padding:10px 13px;border-radius:999px;font:var(--nav-font);color:var(--nav-ink);text-decoration:none;white-space:nowrap;background:none;border:0;cursor:pointer}
+.nav a:hover,.dd-btn:hover,.nav a[aria-current=page],.dd-btn.is-cur{background:var(--nav-hover);color:var(--nav-ink-h)}
+.dd-btn .ico{width:16px;height:16px;transition:transform .2s}
+.dd-btn[aria-expanded=true] .ico{transform:rotate(180deg)}
+.has-dd{position:relative}
+.dd{list-style:none;margin:0;padding:8px;position:absolute;top:calc(100% + 8px);left:0;min-width:290px;background:var(--dd-bg);border:1px solid var(--hdr-line);border-radius:18px;box-shadow:0 24px 48px -24px rgba(0,0,0,.35);display:none}
+.dd-btn[aria-expanded=true]+.dd{display:block}
+.dd a{border-radius:12px;padding:11px 14px;white-space:normal}
+.nav .cta{margin-left:6px}
+.menu-btn{display:none;margin-left:auto;width:48px;height:48px;border:0;border-radius:14px;background:var(--nav-hover);color:var(--nav-ink-h);cursor:pointer;place-items:center}
+.menu-btn svg{width:24px;height:24px}
+@media (max-width:1099px){
+ .menu-btn{display:grid}
+ .hdr{backdrop-filter:none;-webkit-backdrop-filter:none;background:var(--dd-bg)}
+ .nav{position:fixed;inset:79px 0 0 0;background:var(--dd-bg);padding:12px max(16px,env(safe-area-inset-right)) 28px max(16px,env(safe-area-inset-left));overflow-y:auto;visibility:hidden;opacity:0;transform:translateY(-8px);transition:opacity .2s,transform .2s,visibility 0s .2s}
+ .nav.is-open{visibility:visible;opacity:1;transform:none;transition:opacity .2s,transform .2s}
+ .nav>ul{flex-direction:column;align-items:stretch;gap:0}
+ .nav a,.dd-btn{font-size:1.08rem;padding:16px 6px;border-radius:0;border-bottom:1px solid var(--hdr-line);width:100%;justify-content:space-between}
+ .dd{position:static;display:none;box-shadow:none;border:0;padding:0 0 8px 12px;min-width:0;background:transparent}
+ .dd a{border-bottom:1px solid var(--hdr-line);padding:14px 6px;font-size:1rem}
+ .nav .cta{margin:18px 0 0;justify-content:center;border-radius:999px;border:0}
+ body.menu-open{overflow:hidden}
+}
+/* tlačítka */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 26px;border-radius:999px;font:var(--btn-font);letter-spacing:.06em;text-transform:uppercase;text-decoration:none;background:var(--btn-bg);color:var(--btn-fg);border:2px solid var(--btn-bg);transition:transform .2s,background .2s,color .2s;cursor:pointer;text-align:center}
+.btn:hover{transform:translateY(-2px);background:var(--btn-bg-h);border-color:var(--btn-bg-h);color:var(--btn-fg-h)}
+.btn:active{transform:none}
+.btn-ghost{background:transparent;color:var(--ghost-fg);border-color:var(--ghost-line)}
+.btn-ghost:hover{background:var(--ghost-bg-h);color:var(--ghost-fg-h);border-color:var(--ghost-bg-h)}
+.btn .ico{width:18px;height:18px}
+.btns{display:flex;flex-wrap:wrap;gap:12px;margin-top:22px}
+a.ext::after{content:"\2197";font-size:.9em;margin-left:3px}
+.btn.ext::after{margin-left:0}
+main{display:block;padding-bottom:64px}
+.crumbs{margin:18px 0 0;font-size:.95rem;color:var(--ink-soft)}
+.crumbs a{color:var(--ink-soft)}
+.crumbs.wrap{margin:18px auto 0}
+.prose{max-width:70ch}
+.prose p:last-child{margin-bottom:0}
+.list{margin:0;padding-left:1.2em}.list li{margin:.35em 0}
+.tbl-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;border-radius:16px;border:1px solid var(--line)}
+.tbl{width:100%;border-collapse:collapse;font-size:1rem}
+.tbl th,.tbl td{padding:12px 14px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+.tbl thead th{font-size:.74rem;letter-spacing:.08em;text-transform:uppercase}
+.tbl tr:last-child th,.tbl tr:last-child td{border-bottom:0}
+details>summary{cursor:pointer;list-style:none}
+details>summary::-webkit-details-marker{display:none}
+/* lightbox */
+.lb{border:0;padding:0;background:transparent;max-width:100vw;max-height:100vh;width:100vw;height:100vh;margin:0}
+.lb::backdrop{background:rgba(4,8,18,.92)}
+.lb[open]{display:grid;place-items:center}
+.lb-fig{margin:0;display:grid;gap:10px;justify-items:center;max-width:min(1100px,92vw)}
+.lb-fig img{max-height:78vh;width:auto;border-radius:12px}
+.lb-fig figcaption,.lb-count{color:#E6E9EF;font-size:.95rem;text-align:center;margin:0}
+.lb-count{position:fixed;top:22px;left:22px}
+.lb-btn{position:fixed;width:52px;height:52px;border-radius:50%;border:0;background:rgba(255,255,255,.14);color:#fff;display:grid;place-items:center;cursor:pointer}
+.lb-btn:hover{background:rgba(255,255,255,.28)}
+.lb-btn svg{width:26px;height:26px}
+.lb-prev{left:16px;top:50%;transform:translateY(-50%)}.lb-next{right:16px;top:50%;transform:translateY(-50%)}.lb-close{right:16px;top:16px}
+@media (max-width:640px){.lb-prev,.lb-next{top:auto;bottom:20px;transform:none}.lb-prev{left:calc(50% - 64px)}.lb-next{right:calc(50% - 64px)}.lb-fig img{max-height:70vh}}
+
+/* Mobil: minimální velikost písma */
+@media (max-width:759px){
+  main :is(small,th,figcaption,.fcap,.n,.st,.age,.ages li,label,.kicker,.date span,time span){font-size:max(.8125rem,0px)!important}
+  .btns .btn,.btn{font-size:.875rem!important}
+  .brand-t small{font-size:.6875rem!important}
+  main dt,footer h2,.agecards span{font-size:.8125rem!important}
+}
+h1,h2,h3,h4{text-wrap:balance}p,li,dd{text-wrap:pretty}
+.nav{min-width:0}.nav>ul{flex-wrap:wrap;justify-content:flex-end;row-gap:4px}
+.strip{min-width:0;max-width:100%}.stack>*,.panel{min-width:0}
+footer *{min-width:0}footer a,footer li,footer p{overflow-wrap:anywhere}
+.strip,.tbl-wrap,.table-wrap,.subnav{position:relative}
+
+.site-spicky #dd-aktivity{left:auto;right:0}
+.site-spicky{--f-head:"Playfair Display",Georgia,serif;--f-body:"Montserrat","Segoe UI",system-ui,sans-serif}
+.site-spicky h1{font-weight:600;font-size:clamp(2.4rem,1.4rem + 3.6vw,4.4rem);letter-spacing:.01em;line-height:1.02;text-transform:uppercase}
+.site-spicky h2{font-weight:600;font-size:clamp(1.55rem,1.2rem + 1.3vw,2.2rem);letter-spacing:.01em}
+.site-spicky h3{font:600 1.12rem/1.3 var(--f-body);letter-spacing:.01em}
+.sp-mark{width:40px;height:40px;color:var(--steel-l)}
+.brand-t{display:grid;line-height:1}
+.brand-t b{font:600 1.45rem/1 var(--f-head);letter-spacing:.08em;text-transform:uppercase;color:var(--head)}
+.brand-t small{font:600 .62rem/1.3 var(--f-body);letter-spacing:.2em;text-transform:uppercase;color:var(--ink-soft);margin-top:6px}
+.kicker{font:600 .78rem/1.3 var(--f-body);letter-spacing:.24em;text-transform:uppercase;color:var(--steel-l);margin:0 0 14px}
+.lead{font-size:1.14rem;color:var(--ink-soft);max-width:58ch}
+/* hero */
+.sp-hero{position:relative;margin-top:18px;border-radius:28px;overflow:hidden;background:#0D1B2A;min-height:520px;display:grid;align-items:end;isolation:isolate}
+.sp-hero>img{position:absolute;top:0;right:0;bottom:0;width:66%;height:100%;object-fit:cover;object-position:60% 30%;z-index:-2;-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 34%);mask-image:linear-gradient(90deg,transparent 0,#000 34%)}
+.sp-hero::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(13,27,42,.9) 0%,rgba(13,27,42,.55) 34%,rgba(13,27,42,0) 56%),linear-gradient(0deg,rgba(13,27,42,.7) 0%,rgba(13,27,42,0) 32%)}
+.sp-hero-in{padding:clamp(28px,5vw,64px);max-width:720px}
+.sp-hero .lead{color:#D4DAE3}
+.sp-badge{position:absolute;right:clamp(16px,4vw,48px);top:clamp(16px,4vw,40px);width:150px;height:150px;border-radius:50%;border:1px solid rgba(224,225,221,.55);display:grid;place-items:center;text-align:center;font:600 .74rem/1.55 var(--f-body);letter-spacing:.18em;text-transform:uppercase;color:#E0E1DD;background:rgba(13,27,42,.35);backdrop-filter:blur(4px)}
+.sp-badge b{display:block;font:600 2rem/1 var(--f-head);letter-spacing:0;margin:4px 0}
+.sp-hero .fcap{position:absolute;right:18px;bottom:12px;margin:0;color:#B8C4D6;font-size:.78rem}
+@media (max-width:760px){.sp-hero{min-height:0;align-items:start}.sp-hero>img{position:static;width:100%;height:auto;aspect-ratio:4/3;z-index:0;-webkit-mask-image:none;mask-image:none}.sp-hero::before{display:none}.sp-hero-in{background:#0D1B2A}.sp-badge{width:112px;height:112px;font-size:.62rem}.sp-badge b{font-size:1.5rem}.sp-hero .fcap{top:calc(75vw - 30px);bottom:auto}}
+/* panely */
+.panel{margin-top:22px;background:var(--surf);border:1px solid var(--line);border-radius:24px;padding:clamp(22px,3vw,34px)}
+.panel>h2:first-child,.panel-h h2{margin-top:0}
+.panel-h{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:8px 20px;margin-bottom:18px}
+.panel-h h2{margin:0;text-transform:uppercase;font-size:clamp(1.35rem,1.1rem + 1vw,1.8rem);letter-spacing:.04em}
+.panel-h p{margin:0;color:var(--ink-soft)}
+.grid-3{display:grid;gap:22px;grid-template-columns:repeat(3,minmax(0,1fr))}
+.grid-2{display:grid;gap:22px;grid-template-columns:repeat(2,minmax(0,1fr))}
+.row-2{display:grid;gap:22px;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr)}
+@media (max-width:980px){.grid-3{grid-template-columns:minmax(0,1fr)}.row-2{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:760px){.grid-2{grid-template-columns:minmax(0,1fr)}}
+.grid-3>.panel,.grid-2>.panel,.row-2>.panel{margin-top:0}
+.stack>*,.row-2>*,.grid-3>*,.grid-2>*,.yr>*,.cats>*,.status-bar>*,.res-row>*,.switch>*{min-width:0}
+.stack{display:grid;gap:22px;margin-top:22px}
+/* aktuální ročník */
+.yr{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:22px;align-items:center}
+.yr img{border-radius:18px;width:100%;aspect-ratio:4/3;object-fit:cover}
+.yr h3{font:600 1.5rem/1.2 var(--f-head);text-transform:uppercase;letter-spacing:.04em;margin:0 0 12px}
+.meta{list-style:none;margin:0 0 16px;padding:0;display:grid;gap:10px}
+.meta li{display:flex;gap:12px;align-items:flex-start;color:var(--ink)}
+.meta .ico{color:var(--steel-l);margin-top:2px}
+@media (max-width:560px){.yr{grid-template-columns:minmax(0,1fr)}}
+.chip{display:inline-flex;align-items:center;gap:6px;border-radius:999px;padding:5px 12px;font:600 .72rem/1.2 var(--f-body);letter-spacing:.12em;text-transform:uppercase;background:#2A3B55;color:#E0E1DD;border:1px solid #415A77}
+.chip-ok{background:#E0E1DD;color:#0D1B2A;border-color:#E0E1DD}
+/* kategorie */
+.cats{display:grid;gap:14px;grid-template-columns:repeat(2,minmax(0,1fr))}
+.cat{position:relative;border-radius:20px;overflow:hidden;border:1px solid var(--line);background:#0D1B2A;display:grid;min-height:300px;text-decoration:none;color:#E0E1DD;isolation:isolate}
+.cat img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;transition:transform .5s}
+.cat::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(13,27,42,.05) 0%,rgba(13,27,42,.55) 35%,rgba(13,27,42,.97) 62%)}
+.cat-b p,.cat-b h3{text-shadow:0 1px 8px rgba(13,27,42,.9)}
+.cat:hover img{transform:scale(1.04)}
+.cat-b{align-self:end;padding:20px}
+.cat-b h3{font:600 1.5rem/1.15 var(--f-head);text-transform:uppercase;letter-spacing:.04em;margin:0 0 6px;color:#fff}
+.cat-b p{margin:0 0 12px;color:#D4DAE3;font-size:.98rem}
+.ages{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:6px}
+.ages li{border:1px solid rgba(224,225,221,.5);border-radius:999px;padding:4px 10px;font-size:.82rem;color:#fff;background:rgba(13,27,42,.55)}
+.cat .go{position:absolute;right:16px;top:16px;width:42px;height:42px;border-radius:50%;background:#E0E1DD;color:#0D1B2A;display:grid;place-items:center}
+.cat .go .ico{width:20px;height:20px}
+@media (max-width:640px){.cats{grid-template-columns:minmax(0,1fr)}.cat{min-height:0}.cat img{position:static;height:auto;aspect-ratio:16/9;z-index:0}.cat::after{display:none}.cat-b{background:#0D1B2A}}
+/* výhledávač kategorie */
+.finder{display:grid;gap:16px;grid-template-columns:repeat(4,minmax(0,1fr)) auto;align-items:end;background:#0D1B2A;border:1px solid var(--line);border-radius:18px;padding:18px}
+.finder label,.finder legend{display:block;font:600 .74rem/1.3 var(--f-body);letter-spacing:.12em;text-transform:uppercase;color:var(--steel-l);margin-bottom:8px;padding:0}
+.finder fieldset{border:0;margin:0;padding:0;min-width:0}
+.seg{display:flex;border:1px solid #415A77;border-radius:999px;overflow:hidden}
+.seg input{position:absolute;opacity:0;pointer-events:none}
+.seg label{flex:1;margin:0;padding:12px 10px;text-align:center;cursor:pointer;color:#E0E1DD;letter-spacing:.06em;font-size:.78rem}
+.seg input:checked+label{background:#E0E1DD;color:#0D1B2A}
+.seg input:focus-visible+label{outline:3px solid var(--focus);outline-offset:-3px}
+.finder input[type=number],.finder select{width:100%;min-height:48px;border-radius:12px;border:1px solid #415A77;background:#1B263B;color:#fff;font:500 1rem var(--f-body);padding:0 14px}
+.finder-out{margin-top:14px;border-radius:18px;padding:18px 20px;background:#E0E1DD;color:#0D1B2A}
+.finder-out h3{color:#0D1B2A;font:600 1.3rem/1.2 var(--f-head);margin:0 0 6px}
+.finder-out p{margin:0 0 6px}
+.finder-out ul{margin:6px 0 0;padding-left:1.2em}
+.finder-out a{color:#0D1B2A;font-weight:600}
+.finder-out small{color:#33415A}
+@media (max-width:900px){.finder{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}}
+@media (max-width:560px){.finder{grid-template-columns:minmax(0,1fr)}}
+/* proč */
+.why{list-style:none;margin:0;padding:0;display:grid;gap:4px}
+.why li{display:flex;gap:16px;align-items:flex-start;padding:12px 0;border-bottom:1px solid var(--line)}
+.why li:last-child{border-bottom:0}
+.why .ico{width:30px;height:30px;color:var(--steel-l);margin-top:2px}
+.why b{display:block;font-weight:600;color:var(--head)}
+.why span{color:var(--ink-soft);font-size:.96rem}
+/* mini panely */
+.mini img{width:100%;aspect-ratio:16/10;object-fit:cover;border-radius:16px;margin-bottom:16px}
+.mini h2{font-size:1.35rem;text-transform:uppercase;letter-spacing:.04em}
+.docs{list-style:none;margin:14px 0 0;padding:0;display:grid;gap:8px}
+.docs a{display:flex;gap:12px;align-items:center;color:var(--ink);text-decoration:none;padding:10px 12px;border-radius:12px;border:1px solid var(--line)}
+.docs a:hover{background:#24344D}
+.docs .ico{color:var(--steel-l)}
+.docs small{display:block;color:var(--ink-soft);font-size:.82rem}
+/* časté dotazy */
+.faq{display:grid;gap:10px}
+.faq details{background:#E0E1DD;color:#0D1B2A;border-radius:14px}
+.faq summary{display:flex;justify-content:space-between;gap:12px;align-items:center;padding:14px 18px;font-weight:600}
+.faq summary .ico{transition:transform .2s}
+.faq details[open] summary .ico{transform:rotate(180deg)}
+.faq .a{padding:0 18px 16px;color:#1B263B}
+.faq .a p:last-child{margin:0}
+.faq a{color:#0D1B2A;font-weight:600}
+/* ročníky */
+.years{list-style:none;margin:0;padding:0;display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(min(100%,230px),1fr))}
+.year{background:#0D1B2A;border:1px solid var(--line);border-radius:18px;overflow:hidden;display:flex;flex-direction:column;height:100%}
+.year>img{width:100%;aspect-ratio:3/2;object-fit:cover}
+.year-b{padding:14px 16px 16px;display:flex;flex-direction:column;gap:6px;flex:1}
+.year-b h3{font:600 1.2rem/1.2 var(--f-head);margin:0;color:#fff}
+.year-b p{margin:0;color:var(--ink-soft);font-size:.92rem}
+.year-links{margin-top:auto;padding-top:8px;display:flex;flex-wrap:wrap;gap:6px}
+.year-links a{font-size:.82rem;font-weight:600;color:#E0E1DD;border:1px solid #415A77;border-radius:999px;padding:11px 13px;text-decoration:none;display:inline-block}
+.year-links a:hover{background:#E0E1DD;color:#0D1B2A}
+.strip{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(200px,1fr);gap:12px;overflow-x:auto;padding-bottom:8px;scroll-snap-type:x mandatory;list-style:none;margin:0;padding-left:0}
+.strip li{scroll-snap-align:start}
+.strip a{display:block;position:relative;border-radius:16px;overflow:hidden;text-decoration:none;color:#fff;isolation:isolate}
+.strip img{width:100%;aspect-ratio:4/5;object-fit:cover;z-index:-1;position:relative;transition:transform .4s}
+.strip a:hover img{transform:scale(1.04)}
+.strip span{position:absolute;left:0;right:0;bottom:0;padding:30px 14px 12px;background:linear-gradient(0deg,rgba(13,27,42,.95),rgba(13,27,42,0));font:600 1.05rem/1.25 var(--f-head)}
+.strip small{display:block;font:500 .78rem var(--f-body);color:#D4DAE3}
+/* stránky */
+.phead{margin-top:18px;border-radius:26px;padding:clamp(26px,4vw,52px);background:radial-gradient(120% 140% at 85% 0%,#415A77 0%,#1B263B 45%,#0D1B2A 100%);border:1px solid var(--line);position:relative;overflow:hidden}
+.phead h1{font-size:clamp(2rem,1.3rem + 2.6vw,3.3rem)}
+.phead .lead{margin:0}
+.phead .sp-mark{position:absolute;right:clamp(16px,4vw,48px);top:50%;transform:translateY(-50%);width:clamp(80px,14vw,160px);height:auto;opacity:.35}
+.quick-go{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-top:18px;padding:14px 18px;border-radius:20px;background:var(--surf);border:1px solid var(--line)}
+.quick-go b{margin-right:6px;font-weight:600;color:#fff}
+.quick-go a{display:inline-flex;align-items:center;gap:8px;min-height:44px;border-radius:999px;padding:0 16px;background:#E0E1DD;color:#0D1B2A;font-weight:600;text-decoration:none}
+.quick-go a:hover{background:#fff}
+.subnav{position:sticky;top:79px;z-index:20;display:flex;gap:8px;overflow-x:auto;padding:12px 0;margin-top:10px;background:var(--bg);scrollbar-width:thin}
+.subnav a{flex:none;border:1px solid #415A77;border-radius:999px;padding:10px 16px;font-weight:600;font-size:.9rem;color:#E0E1DD;text-decoration:none;white-space:nowrap}
+.subnav a:hover{background:#E0E1DD;color:#0D1B2A}
+.switch{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:18px}
+.switch a{display:flex;gap:14px;align-items:center;border-radius:20px;padding:18px 20px;text-decoration:none;border:1px solid var(--line);background:var(--surf);color:#E0E1DD}
+.switch a:hover{border-color:#E0E1DD}
+.switch b{display:block;font:600 1.3rem/1.2 var(--f-head);color:#fff}
+.switch span{color:var(--ink-soft);font-size:.92rem}
+.switch .tag{flex:none;width:52px;height:52px;border-radius:50%;display:grid;place-items:center;font:700 .8rem var(--f-body);letter-spacing:.06em}
+.switch .tag-am{background:#E0E1DD;color:#0D1B2A}.switch .tag-pro{background:#778DA9;color:#0D1B2A}
+@media (max-width:640px){.switch{grid-template-columns:minmax(0,1fr)}}
+.rule-h{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:6px}
+.rule-h h2{margin:0}
+.panel-am{border-top:6px solid #E0E1DD}.panel-pro{border-top:6px solid #778DA9}
+.agecards{list-style:none;margin:18px 0;padding:0;display:grid;gap:10px;grid-template-columns:repeat(auto-fill,minmax(150px,1fr))}
+.agecards li{background:#0D1B2A;border:1px solid var(--line);border-radius:16px;padding:14px 16px}
+.agecards b{display:block;font:600 1.6rem/1 var(--f-head);color:#fff}
+.agecards span{display:block;font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:var(--steel-l);margin-top:6px}
+.agecards em{display:block;font-style:normal;font-weight:600;color:#E0E1DD;margin-top:2px}
+.site-spicky .tbl{background:#0D1B2A}
+.site-spicky .tbl thead th{background:#24344D;color:#E0E1DD}
+.site-spicky .tbl tbody th{color:#fff;font-weight:600;white-space:nowrap}
+.site-spicky .tbl td{color:#E0E1DD}
+.acc{margin-top:14px;display:grid;gap:10px}
+.acc details{border:1px solid var(--line);border-radius:16px;background:#0D1B2A}
+.acc summary{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:16px 18px;font-weight:600;color:#fff}
+.acc summary .ico{transition:transform .2s;color:var(--steel-l)}
+.acc details[open] summary .ico{transform:rotate(180deg)}
+.acc .a{padding:0 18px 18px}
+.facts{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));margin:0}
+.fact{background:#0D1B2A;border:1px solid var(--line);border-radius:16px;padding:16px 18px;margin:0;display:flex;gap:14px}
+.fact .ico{width:26px;height:26px;color:var(--steel-l);margin-top:2px}
+.fact dt{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--steel-l);margin-bottom:4px;font-weight:600}
+.fact dd{margin:0;font-weight:600;color:#fff}
+.fact dd small{display:block;font-weight:400;color:var(--ink-soft);margin-top:4px;font-size:.92rem}
+.status-bar{margin-top:18px;display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:16px}
+.status{border-radius:20px;padding:20px 22px;background:#E0E1DD;color:#0D1B2A;display:flex;gap:16px;align-items:flex-start}
+.status .ico{width:30px;height:30px;color:#0D1B2A;margin-top:2px}
+.status h2{color:#0D1B2A;font-size:1.3rem;margin:0 0 6px;text-transform:none;letter-spacing:0}
+.status p{margin:0;color:#1B263B}
+.person{border-radius:20px;padding:20px 22px;background:var(--surf);border:1px solid var(--line)}
+.person small{display:block;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--steel-l);font-weight:600}
+.person b{display:block;font:600 1.25rem var(--f-head);color:#fff;margin:4px 0 8px}
+.person a{display:flex;gap:10px;align-items:center;color:#E0E1DD;text-decoration:none;padding:6px 0;font-weight:600}
+.person a:hover{text-decoration:underline}
+.person .ico{color:var(--steel-l)}
+@media (max-width:860px){.status-bar{grid-template-columns:minmax(0,1fr)}}
+.steps{list-style:none;margin:0;padding:0;counter-reset:s;display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr))}
+.steps li{counter-increment:s;background:#0D1B2A;border:1px solid var(--line);border-radius:18px;padding:18px 18px 18px 72px;position:relative}
+.steps li::before{content:counter(s);position:absolute;left:18px;top:18px;width:40px;height:40px;border-radius:50%;background:#E0E1DD;color:#0D1B2A;display:grid;place-items:center;font:600 1.1rem var(--f-head)}
+.steps b{display:block;color:#fff;font-weight:600}
+.steps span{color:var(--ink-soft);font-size:.96rem}
+.contacts{list-style:none;margin:0;padding:0;display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr))}
+.contacts li{background:#0D1B2A;border:1px solid var(--line);border-radius:18px;padding:18px}
+.contacts small{display:block;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--steel-l);font-weight:600}
+.contacts b{display:block;color:#fff;font:600 1.15rem var(--f-head);margin:4px 0 6px}
+.contacts a{color:#E0E1DD;font-weight:600;display:inline-block;padding:10px 0}
+.albums{list-style:none;margin:0;padding:0;display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(min(100%,220px),1fr))}
+.albums a{display:block;position:relative;border-radius:16px;overflow:hidden;color:#fff;text-decoration:none;isolation:isolate;border:1px solid var(--line)}
+.albums img{width:100%;aspect-ratio:3/2;object-fit:cover;position:relative;z-index:-1}
+.albums span{display:block;padding:12px 14px;background:#0D1B2A;font:600 1.05rem var(--f-head)}
+.albums small{display:block;font:500 .8rem var(--f-body);color:var(--ink-soft)}
+.thumbs{list-style:none;margin:0;padding:0;display:grid;gap:10px;grid-template-columns:repeat(auto-fill,minmax(min(46%,180px),1fr))}
+.thumbs a{display:block;border-radius:12px;overflow:hidden;border:1px solid var(--line)}
+.thumbs img{width:100%;aspect-ratio:1;object-fit:cover;transition:transform .3s}
+.thumbs a:hover img{transform:scale(1.05)}
+.partners{list-style:none;margin:0;padding:0;display:grid;gap:10px;grid-template-columns:repeat(auto-fill,minmax(min(100%,220px),1fr))}
+.partners li{background:#0D1B2A;border:1px solid var(--line);border-radius:14px;padding:16px;font-weight:600}
+.partners a{color:#E0E1DD;display:inline-block;padding:10px 0}
+.fund{list-style:none;margin:0;padding:0;display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr))}
+.fund li{background:#E0E1DD;color:#0D1B2A;border-radius:18px;padding:22px;font:600 1.2rem var(--f-head)}
+.fcap{font-size:.8rem;color:var(--ink-soft);margin:8px 0 0}
+.note{border-left:4px solid #778DA9;padding:4px 0 4px 16px;color:var(--ink-soft)}
+.res{display:grid;gap:14px}
+.res-row{display:grid;grid-template-columns:200px minmax(0,1fr) minmax(0,1.1fr);gap:18px;align-items:center;background:#0D1B2A;border:1px solid var(--line);border-radius:18px;padding:12px;overflow:hidden}
+.res-row img{width:100%;aspect-ratio:3/2;object-fit:cover;border-radius:12px}
+.res-row h3{font:600 1.3rem/1.2 var(--f-head);margin:0 0 4px;color:#fff}
+.res-row p{margin:0;color:var(--ink-soft);font-size:.94rem}
+.res-row .year-links{padding:0;margin:0}
+@media (max-width:860px){.res-row{grid-template-columns:140px minmax(0,1fr)}.res-row>div:last-child{grid-column:1/-1}}
+@media (max-width:480px){.res-row{grid-template-columns:minmax(0,1fr)}}
+/* patička */
+.ftr{margin-top:auto;background:#08121D;color:#C9D3E2;padding:48px 0 28px;border-top:1px solid var(--line)}
+.ftr a{color:#fff}
+.ftr-grid{display:grid;grid-template-columns:minmax(0,1.3fr) repeat(2,minmax(0,1fr));gap:28px}
+.ftr h2{font:600 .74rem var(--f-body);letter-spacing:.18em;text-transform:uppercase;color:#9DB0C9;margin:0 0 12px}
+.ftr ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.ftr-bottom{border-top:1px solid rgba(255,255,255,.14);margin-top:28px;padding-top:18px;font-size:.88rem;display:flex;flex-wrap:wrap;gap:8px 20px;justify-content:space-between}
+@media (max-width:760px){.ftr-grid{grid-template-columns:minmax(0,1fr)}}
+</style>
+</head>
+<body class="site-spicky">
+<a class="skip" href="#obsah">Přeskočit na obsah</a>
+<header class="hdr"><div class="wrap bar">
+<a class="brand" href="index.html" aria-label="Na špičkách – úvod"><svg class="sp-mark" viewBox="0 0 40 40" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M20 4.5c.8 5.6 3.7 8.5 9.3 9.3-5.6.8-8.5 3.7-9.3 9.3-.8-5.6-3.7-8.5-9.3-9.3 5.6-.8 8.5-3.7 9.3-9.3z"/><path d="M6 33c6-4.5 22-4.5 28 0"/><path d="M11 36.5c4.5-2.5 13.5-2.5 18 0"/></svg><span class="brand-t"><b>Na špičkách</b><small>Mezinárodní baletní soutěž · Brno</small></span></a>
+<button class="menu-btn" id="menu-btn" type="button" aria-expanded="false" aria-controls="site-nav"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg><span class="sr-only">Menu</span></button>
+<nav class="nav" id="site-nav" aria-label="Hlavní menu Na špičkách"><ul><li class="has-dd"><button class="dd-btn is-cur" type="button" aria-expanded="false" aria-controls="dd-soutez">Soutěž<svg class="ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></button><ul class="dd" id="dd-soutez"><li><a href="spicky-soutez.html">O soutěži</a></li><li><a href="spicky-pravidla.html">Pravidla</a></li><li><a href="spicky-prihlaska.html">Přihláška</a></li><li><a href="spicky-vysledky.html">Výsledky</a></li><li><a href="spicky-foto.html" aria-current=page>Fotogalerie</a></li><li><a href="spicky-partneri.html">Partneři</a></li></ul></li><li class="has-dd"><button class="dd-btn" type="button" aria-expanded="false" aria-controls="dd-aktivity">Naše aktivity<svg class="ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></button><ul class="dd" id="dd-aktivity"><li><a href="../filianek/pro-deti.html">Pro děti</a></li><li><a href="../filianek/pro-dospele.html">Pro dospělé</a></li><li><a href="../filianek/pro-seniory.html">Pro seniory</a></li><li><a href="../filianek/pro-skoly.html">Pro školy a školky</a></li><li><a href="index.html">Soutěž Na špičkách</a></li><li><a href="../filianek/slovo-detmi-malovane.html">Soutěž Slovo dětmi malované</a></li></ul></li><li><a href="spicky-kontakt.html">Kontakt</a></li></ul></nav>
+</div></header>
+<main id="obsah">
+<p class="crumbs wrap"><a href="index.html">Úvod</a> › Fotogalerie</p><div class="wrap"><section class="phead" aria-labelledby="h1"><p class="kicker">Foto</p><h1 id="h1">Fotografie ze soutěže</h1><p class="lead">Vybrané fotografie ročníků 2024–2026 si prohlédnete přímo zde. Celá alba všech ročníků jsou na současném webu soutěže.</p><svg class="sp-mark" viewBox="0 0 40 40" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M20 4.5c.8 5.6 3.7 8.5 9.3 9.3-5.6.8-8.5 3.7-9.3 9.3-.8-5.6-3.7-8.5-9.3-9.3 5.6-.8 8.5-3.7 9.3-9.3z"/><path d="M6 33c6-4.5 22-4.5 28 0"/><path d="M11 36.5c4.5-2.5 13.5-2.5 18 0"/></svg></section></div><div class="wrap"><nav class="subnav" aria-label="Ročníky"><a href="#rocnik-11">2026</a><a href="#rocnik-10">2025</a><a href="#rocnik-9">2024</a><a href="#starsi">2015–2023</a></nav><div class="stack" style="margin-top:8px"><section class="panel" id="rocnik-11" aria-labelledby="g26-t"><div class="panel-h"><h2 id="g26-t">11. ročník 2026</h2><p><a class="ext" href="https://www.naspickach.cz/fotogalerie-11" target="_blank" rel="noopener">Celé album 2026<span class="sr-only"> (fotogalerie na současném webu soutěže)</span></a></p></div><ul class="thumbs"><li><a href="img/spicky/g2026-01.jpg" data-lb="g26" data-alt="Ze soutěže Na špičkách 2026" data-cap="Foto: SylvaK Photography, ročník 2026"><img src="img/spicky/g2026-01.jpg" alt="Ze soutěže Na špičkách 2026" width="800" height="533" loading="lazy" decoding="async"><span class="sr-only"> – zvětšit</span></a></li><li><a href="img/spicky/g2026-02.jpg" data-lb="g26" data-alt="Ze soutěže Na špičkách 2026" data-cap="Foto: SylvaK Photography, ročník 2026"><img src="img/spicky/g2026-02.jpg" alt="Ze soutěže Na špičkách 2026" width="800" height="533" loading="lazy" decoding="async"><span class="sr-only"> – zvětšit</span></a></li><li><a href="img/spicky/g2026-03.jpg" data-lb="g26" data-alt="Ze soutěže Na špičkách 2026" data-cap="Foto: SylvaK Photography, ročník 2026"><img src="img/spicky/g2026-03.jpg" alt="Ze soutěže Na špičkách 2026" width="800" height="533" loading="lazy" decoding="async"><span class="sr-only"> – zvětšit</span></a></li><li><a href="img/spicky/g2026-04.jpg" data-lb="g26" data-alt="Ze soutěže Na špičkách 2026" data-cap="Foto: SylvaK Photography, ročník 2026"><img src="img/spicky/g2026-04.jpg" alt="Ze soutěže Na špičkách 2026" width="800" height="533" loading="lazy" decoding="async"><span class="sr-only"> – zvětšit</span></a></li><li><a href="img/spicky/g2026-05.jpg" data-lb="g26" data-alt="Ze soutěže Na špičkách 2026" data-cap="Foto: SylvaK Photography, ročník 2026"><img src="img/spicky/g2026-05.jpg" alt="Ze soutěže Na špičkách 2026" width="800" height="533" loading="lazy" decoding="async"><span class="sr-only"> – zvětšit</span></a></li><li><a href="img/spicky/g2026-06.jpg" data-lb="g26" data-alt="Ze soutěže Na špičkách 2026" data-cap="Foto: SylvaK Photography, ročník 2026"><img src="img/spicky/g2026-06.jpg" alt="Ze soutěže Na špičkách 2026" width="800" height="533" loading="lazy" decoding="async"><span class="sr-only"> – zvětšit</span></a></li><li><a href="img/spicky/g2026-07.jpg" data-lb="g26" data-alt="Ze soutěže Na špičkách 2026" data-cap="Foto: SylvaK Photography, ročník 2026"><img src="img/spicky/g2026-07.jpg" alt="Ze soutěže Na špičkách 2026" width="800" height="533" loading="lazy" decoding="async"><span class="sr-only"> – zvětšit</span></a></li><li><a href="img/spicky/g2026-08.jpg" data-lb="g26" data-alt="Ze soutěže Na špičkách 2026" data-cap="Foto: SylvaK Photography, ročník 2026"><img src="img/spicky/g2026-08.jpg" alt="Ze soutěže Na špičkách 2026" width="800" height="533" loading="lazy" decoding="async"><span class="sr-only"> – zvětšit</span></a></li><li><a href="img/spicky/g2026-09.jpg" data-lb="g26" data-alt="Ze soutěže Na špičkách 2026" data-cap="Foto: SylvaK Photography, ročník 2026"><img src="img/spicky/g2026-09.jpg" alt="Ze soutěže Na špičkách 2026" width="800" height="533" loading="lazy" decoding="async"><span class="sr-only"> – zvětšit</span></a></li><li><a href="img/spicky/g2026-10.jpg" data-lb="g26" data-alt="Ze soutěže Na špičkách 2026" data-cap="Foto: SylvaK Photography, ročník 2026"><img src="img/spicky/g2026-10.jpg" alt="Ze soutěže Na špičkách 2026" width="800" height="533" loading="lazy" decoding="async"><span class="sr-only"> – zvětšit</span></a></li><li><a href="img/spicky/g2026-11.jpg" data-lb="g26" data-alt="Ze soutěže Na špičkách 2026" data-cap="Foto: SylvaK Photography, ročník 2026"><img src="img/spicky/g2026-11.jpg" alt="Ze soutěže Na špičkách 2026" width="800" height="533" loading="lazy" decoding="async"><span class="sr-only"> – zvětšit</span></a></li><li><a href="img/spicky/g2026-12.jpg" data-lb="g26" data-alt="Ze soutěže Na špičkách 2026" data-cap="Foto: SylvaK Photography, ročník 2026"><img src="img/spicky/g2026-12.jpg" alt="Ze soutěže Na špičkách 2026" width="800" height="533" loading="lazy" decoding="async"><span class="sr-only"> – zvětšit</span></a></li><li><a href="img/spicky/g2026-13.jpg" data-lb="g26" data-alt="Ze soutěže Na špičkách 2026" data-cap="Foto: SylvaK Photography, ročník 2026"><img src="img/spicky/g2026-13.jpg" alt="Ze soutěže Na špičkách 2026" width="800" height="533" loading="lazy" decoding="async"><span class="sr-only"> – zvětšit</span></a></li><li><a href="img/spicky/g2026-14.jpg" data-lb="g26" data-alt="Ze soutěže Na špičkách 2026" data-cap="Foto: SylvaK Photography, ročník 2026"><img src="img/spicky/g2026-14.jpg" alt="Ze soutěže Na špičkách 2026" width="800" height="533" loading="lazy" decoding="async"><span class="sr-only"> – zvětšit</span></a></li><li><a href="img/spicky/g2026-15.jpg" data-lb="g26" data-alt="Ze soutěže Na špičkách 2026" data-cap="Foto: SylvaK Photography, ročník 2026"><img src="img/spicky/g2026-15.jpg" alt="Ze soutěže Na špičkách 2026" width="800" height="533" loading="lazy" decoding="async"><span class="sr-only"> – zvětšit</span></a></li><li><a href="img/spicky/g2026-16.jpg" data-lb="g26" data-alt="Ze soutěže Na špičkách 2026" data-cap="Foto: SylvaK Photography, ročník 2026"><img src="img/spicky/g2026-16.jpg" alt="Ze soutěže Na špičkách 2026" width="800" height="533" loading="lazy" decoding="async"><span class="sr-only"> – zvětšit</span></a></li><li><a href="img/spicky/g2026-17.jpg" data-lb="g26" data-alt="Ze soutěže Na špičkách 2026" data-cap="Foto: SylvaK Photography, ročník 2026"><img src="img/spicky/g2026-17.jpg" alt="Ze soutěže Na špičkách 2026" width="800" height="533" loading="lazy" decoding="async"><span class="sr-only"> – zvětšit</span></a></li><li><a href="img/spicky/g2026-18.jpg" data-lb="g26" data-alt="Ze soutěže Na špičkách 2026" data-cap="Foto: SylvaK Photography, ročník 2026"><img src="img/spicky/g2026-18.jpg" alt="Ze soutěže Na špičkách 2026" width="800" height="533" loading="lazy" decoding="async"><span class="sr-only"> – zvětšit</span></a></li><li><a href="img/spicky/g2026-19.jpg" data-lb="g26" data-alt="Ze soutěže Na špičkách 2026" data-cap="Foto: SylvaK Photography, ročník 2026"><img src="img/spicky/g2026-19.jpg" alt="Ze soutěže Na špičkách 2026" width="400" height="600" loading="lazy" decoding="async"><span class="sr-only"> – zvětšit</span></a></li><li><a href="img/spicky/g2026-20.jpg" data-lb="g26" data-alt="Ze soutěže Na špičkách 2026" data-cap="Foto: SylvaK Photography, ročník 2026"><img src="img/spicky/g2026-20.jpg" alt="Ze soutěže Na špičkách 2026" width="400" height="600" loading="lazy" decoding="async"><span class="sr-only"> – zvětšit</span></a></li><li><a href="img/spicky/g2026-21.jpg" data-lb="g26" data-alt="Ze soutěže Na špičkách 2026" data-cap="Foto: SylvaK Photography, ročník 2026"><img src="img/spicky/g2026-21.jpg" alt="Ze soutěže Na špičkách 2026" width="400" height="600" loading="lazy" decoding="async"><span class="sr-only"> – zvětšit</span></a></li><li><a href="img/spicky/g2026-22.jpg" data-lb="g26" data-alt="Ze soutěže Na špičkách 2026" data-cap="Foto: SylvaK Photography, ročník 2026"><img src="img/spicky/g2026-22.jpg" alt="Ze soutěže Na špičkách 2026" width="400" height="600" loading="lazy" decoding="async"><span class="sr-only"> – zvětšit</span></a></li><li><a href="img/spicky/g2026-23.jpg" data-lb="g26" data-alt="Ze soutěže Na špičkách 2026" data-cap="Foto: SylvaK Photography, ročník 2026"><img src="img/spicky/g2026-23.jpg" alt="Ze soutěže Na špičkách 2026" width="400" height="600" loading="lazy" decoding="async"><span class="sr-only"> – zvětšit</span></a></li><li><a href="img/spicky/g2026-24.jpg" data-lb="g26" data-alt="Ze soutěže Na špičkách 2026" data-cap="Foto: SylvaK Photography, ročník 2026"><img src="img/spicky/g2026-24.jpg" alt="Ze soutěže Na špičkách 2026" width="400" height="600" loading="lazy" decoding="async"><span class="sr-only"> – zvětšit</span></a></li></ul><p class="fcap">Foto: SylvaK Photography, ročník 2026</p></section><section class="panel" id="rocnik-10" aria-labelledby="g25-t"><div class="panel-h"><h2 id="g25-t">10. ročník 2025</h2><p><a class="ext" href="https://www.naspickach.cz/fotogalerie-10" target="_blank" rel="noopener">Celé album 2025<span class="sr-only"> (fotogalerie na současném webu soutěže)</span></a></p></div><ul class="thumbs"><li><a href="img/spicky/g2025-01.jpg" data-lb="g25" data-alt="Ze soutěže Na špičkách 2025" data-cap="Ročník 2025, archiv soutěže"><img src="img/spicky/g2025-01.jpg" alt="Ze soutěže Na špičkách 2025" width="800" height="533" loading="lazy" decoding="async"><span class="sr-only"> – zvětšit</span></a></li><li><a href="img/spicky/g2025-02.jpg" data-lb="g25" data-alt="Ze soutěže Na špičkách 2025" data-cap="Ročník 2025, archiv soutěže"><img src="img/spicky/g2025-02.jpg" alt="Ze soutěže Na špičkách 2025" width="800" height="533" loading="lazy" decoding="async"><span class="sr-only"> – zvětšit</span></a></li><li><a href="img/spicky/g2025-03.jpg" data-lb="g25" data-alt="Ze soutěže Na špičkách 2025" data-cap="Ročník 2025, archiv soutěže"><img src="img/spicky/g2025-03.jpg" alt="Ze soutěže Na špičkách 2025" width="800" height="533" loading="lazy" decoding="async"><span class="sr-only"> – zvětšit</span></a></li><li><a href="img/spicky/g2025-04.jpg" data-lb="g25" data-alt="Ze soutěže Na špičkách 2025" data-cap="Ročník 2025, archiv soutěže"><img src="img/spicky/g2025-04.jpg" alt="Ze soutěže Na špičkách 2025" width="800" height="533" loading="lazy" decoding="async"><span class="sr-only"> – zvětšit</span></a></li><li><a href="img/spicky/g2025-05.jpg" data-lb="g25" data-alt="Ze soutěže Na špičkách 2025" data-cap="Ročník 2025, archiv soutěže"><img src="img/spicky/g2025-05.jpg" alt="Ze soutěže Na špičkách 2025" width="800" height="533" loading="lazy" decoding="async"><span class="sr-only"> – zvětšit</span></a></li><li><a href="img/spicky/g2025-06.jpg" data-lb="g25" data-alt="Ze soutěže Na špičkách 2025" data-cap="Ročník 2025, archiv soutěže"><img src="img/spicky/g2025-06.jpg" alt="Ze soutěže Na špičkách 2025" width="800" height="533" loading="lazy" decoding="async"><span class="sr-only"> – zvětšit</span></a></li><li><a href="img/spicky/g2025-07.jpg" data-lb="g25" data-alt="Ze soutěže Na špičkách 2025" data-cap="Ročník 2025, archiv soutěže"><img src="img/spicky/g2025-07.jpg" alt="Ze soutěže Na špičkách 2025" width="400" height="600" loading="lazy" decoding="async"><span class="sr-only"> – zvětšit</span></a></li><li><a href="img/spicky/g2025-08.jpg" data-lb="g25" data-alt="Ze soutěže Na špičkách 2025" data-cap="Ročník 2025, archiv soutěže"><img src="img/spicky/g2025-08.jpg" alt="Ze soutěže Na špičkách 2025" width="400" height="600" loading="lazy" decoding="async"><span class="sr-only"> – zvětšit</span></a></li></ul></section><section class="panel" id="rocnik-9" aria-labelledby="g24-t"><div class="panel-h"><h2 id="g24-t">9. ročník 2024</h2><p><a class="ext" href="https://www.naspickach.cz/fotogalerie-9" target="_blank" rel="noopener">Celé album 2024<span class="sr-only"> (fotogalerie na současném webu soutěže)</span></a></p></div><ul class="thumbs"><li><a href="img/spicky/g2024-01.jpg" data-lb="g24" data-alt="Ze soutěže Na špičkách 2024" data-cap="Ročník 2024, archiv soutěže"><img src="img/spicky/g2024-01.jpg" alt="Ze soutěže Na špičkách 2024" width="800" height="533" loading="lazy" decoding="async"><span class="sr-only"> – zvětšit</span></a></li><li><a href="img/spicky/g2024-02.jpg" data-lb="g24" data-alt="Ze soutěže Na špičkách 2024" data-cap="Ročník 2024, archiv soutěže"><img src="img/spicky/g2024-02.jpg" alt="Ze soutěže Na špičkách 2024" width="800" height="533" loading="lazy" decoding="async"><span class="sr-only"> – zvětšit</span></a></li><li><a href="img/spicky/g2024-03.jpg" data-lb="g24" data-alt="Ze soutěže Na špičkách 2024" data-cap="Ročník 2024, archiv soutěže"><img src="img/spicky/g2024-03.jpg" alt="Ze soutěže Na špičkách 2024" width="800" height="533" loading="lazy" decoding="async"><span class="sr-only"> – zvětšit</span></a></li><li><a href="img/spicky/g2024-04.jpg" data-lb="g24" data-alt="Ze soutěže Na špičkách 2024" data-cap="Ročník 2024, archiv soutěže"><img src="img/spicky/g2024-04.jpg" alt="Ze soutěže Na špičkách 2024" width="800" height="533" loading="lazy" decoding="async"><span class="sr-only"> – zvětšit</span></a></li><li><a href="img/spicky/g2024-05.jpg" data-lb="g24" data-alt="Ze soutěže Na špičkách 2024" data-cap="Ročník 2024, archiv soutěže"><img src="img/spicky/g2024-05.jpg" alt="Ze soutěže Na špičkách 2024" width="400" height="600" loading="lazy" decoding="async"><span class="sr-only"> – zvětšit</span></a></li><li><a href="img/spicky/g2024-06.jpg" data-lb="g24" data-alt="Ze soutěže Na špičkách 2024" data-cap="Ročník 2024, archiv soutěže"><img src="img/spicky/g2024-06.jpg" alt="Ze soutěže Na špičkách 2024" width="400" height="600" loading="lazy" decoding="async"><span class="sr-only"> – zvětšit</span></a></li><li><a href="img/spicky/g2024-07.jpg" data-lb="g24" data-alt="Ze soutěže Na špičkách 2024" data-cap="Ročník 2024, archiv soutěže"><img src="img/spicky/g2024-07.jpg" alt="Ze soutěže Na špičkách 2024" width="400" height="600" loading="lazy" decoding="async"><span class="sr-only"> – zvětšit</span></a></li><li><a href="img/spicky/g2024-08.jpg" data-lb="g24" data-alt="Ze soutěže Na špičkách 2024" data-cap="Ročník 2024, archiv soutěže"><img src="img/spicky/g2024-08.jpg" alt="Ze soutěže Na špičkách 2024" width="800" height="533" loading="lazy" decoding="async"><span class="sr-only"> – zvětšit</span></a></li></ul></section><section class="panel" id="starsi" aria-labelledby="st-t"><h2 id="st-t">Alba ročníků 2015–2023</h2><ul class="albums"><li id="rocnik-8"><a href="https://www.naspickach.cz/fotogalerie-8" target="_blank" rel="noopener"><img src="img/spicky/cover-2023.jpg" alt="" width="800" height="533" loading="lazy" decoding="async"><span>8. ročník 2023<small>Album na současném webu soutěže ↗</small></span><span class="sr-only"> (otevře se v novém okně)</span></a></li><li id="rocnik-7"><a href="https://www.naspickach.cz/fotogalerie-7" target="_blank" rel="noopener"><img src="img/spicky/cover-2022.jpg" alt="" width="800" height="533" loading="lazy" decoding="async"><span>7. ročník 2022<small>Album na současném webu soutěže ↗</small></span><span class="sr-only"> (otevře se v novém okně)</span></a></li><li id="rocnik-6"><a href="https://www.naspickach.cz/fotogalerie-6" target="_blank" rel="noopener"><img src="img/spicky/cover-2021.jpg" alt="" width="800" height="390" loading="lazy" decoding="async"><span>6. ročník 2021<small>Album na současném webu soutěže ↗</small></span><span class="sr-only"> (otevře se v novém okně)</span></a></li><li id="rocnik-5"><a href="https://www.naspickach.cz/fotogalerie-5" target="_blank" rel="noopener"><img src="img/spicky/cover-2019.jpg" alt="" width="800" height="534" loading="lazy" decoding="async"><span>5. ročník 2019<small>Album na současném webu soutěže ↗</small></span><span class="sr-only"> (otevře se v novém okně)</span></a></li><li id="rocnik-4"><a href="https://www.naspickach.cz/fotogalerie-4" target="_blank" rel="noopener"><img src="img/spicky/cover-2018.jpg" alt="" width="800" height="534" loading="lazy" decoding="async"><span>4. ročník 2018<small>Album na současném webu soutěže ↗</small></span><span class="sr-only"> (otevře se v novém okně)</span></a></li><li id="rocnik-3"><a href="https://www.naspickach.cz/fotogalerie-3" target="_blank" rel="noopener"><img src="img/spicky/cover-2017.jpg" alt="" width="800" height="534" loading="lazy" decoding="async"><span>3. ročník 2017<small>Album na současném webu soutěže ↗</small></span><span class="sr-only"> (otevře se v novém okně)</span></a></li><li id="rocnik-2"><a href="https://www.naspickach.cz/fotogalerie-2" target="_blank" rel="noopener"><img src="img/spicky/cover-2016.jpg" alt="" width="800" height="534" loading="lazy" decoding="async"><span>2. ročník 2016<small>Album na současném webu soutěže ↗</small></span><span class="sr-only"> (otevře se v novém okně)</span></a></li><li id="rocnik-1"><a href="https://www.naspickach.cz/fotogalerie-1" target="_blank" rel="noopener"><img src="img/spicky/cover-2015.jpg" alt="" width="800" height="534" loading="lazy" decoding="async"><span>1. ročník 2015<small>Album na současném webu soutěže ↗</small></span><span class="sr-only"> (otevře se v novém okně)</span></a></li></ul><p class="fcap">Alba se otevřou na současném webu soutěže.</p></section></div></div>
+</main>
+<footer class="ftr"><div class="wrap"><div class="ftr-grid">
+<div><a class="brand" href="index.html" aria-label="Na špičkách – úvod"><svg class="sp-mark" viewBox="0 0 40 40" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M20 4.5c.8 5.6 3.7 8.5 9.3 9.3-5.6.8-8.5 3.7-9.3 9.3-.8-5.6-3.7-8.5-9.3-9.3 5.6-.8 8.5-3.7 9.3-9.3z"/><path d="M6 33c6-4.5 22-4.5 28 0"/><path d="M11 36.5c4.5-2.5 13.5-2.5 18 0"/></svg><span class="brand-t"><b>Na špičkách</b><small>Mezinárodní baletní soutěž · Brno</small></span></a>
+<p style="margin-top:16px">Soutěž v klasickém tanci a contemporary pro děti a mládež. Pořádá Baletní škola Filiánek, Filiánek, z. s., Antonínská 564/18, 602 00 Brno.</p></div>
+<div><h2>Soutěž</h2><ul><li><a href="spicky-soutez.html">O soutěži</a></li><li><a href="spicky-pravidla.html">Pravidla</a></li><li><a href="spicky-prihlaska.html">Přihláška</a></li><li><a href="spicky-vysledky.html">Výsledky a ročníky</a></li><li><a href="spicky-foto.html">Fotogalerie</a></li><li><a href="spicky-partneri.html">Partneři</a></li><li><a href="spicky-kontakt.html">Kontakt</a></li></ul></div>
+<div><h2>Pořadatel</h2><ul><li><a href="../filianek/index.html">Filiánek, z. s. – filianek.cz</a></li><li><a href="../balet/index.html">Baletní škola Filiánek</a></li><li><a href="mailto:naspickach@filianek.cz">naspickach@filianek.cz</a></li><li><a class="ext" href="https://www.facebook.com/Na-%C5%A1pi%C4%8Dk%C3%A1ch-Brno-646148912489955/" target="_blank" rel="noopener">Facebook soutěže<span class="sr-only"> (Facebook, otevře se v novém okně)</span></a></li></ul></div>
+</div><div class="ftr-bottom"><span>© Filiánek, z. s.</span><span>Prototyp nové podoby webu naspickach.cz</span></div></div></footer>
+<script>(function(){var v=window.performance&&performance.getEntriesByType&&performance.getEntriesByType('navigation')[0];if(window.top!==window&&!location.hash&&v&&v.type==='navigate')document.documentElement.scrollIntoView({block:'start'});})();
+(function(){var b=document.getElementById('menu-btn'),n=document.getElementById('site-nav');if(!b||!n)return;
+function s(o){b.setAttribute('aria-expanded',o?'true':'false');b.querySelector('.sr-only').textContent=o?'Zavřít menu':'Menu';n.classList.toggle('is-open',o);document.body.classList.toggle('menu-open',o);}
+b.addEventListener('click',function(){s(b.getAttribute('aria-expanded')!=='true')});
+n.addEventListener('click',function(e){if(e.target.closest('a'))s(false)});
+document.querySelectorAll('.dd-btn').forEach(function(d){d.addEventListener('click',function(){var o=d.getAttribute('aria-expanded')!=='true';document.querySelectorAll('.dd-btn').forEach(function(x){x.setAttribute('aria-expanded','false')});d.setAttribute('aria-expanded',o?'true':'false');});});
+document.addEventListener('click',function(e){if(!e.target.closest('.has-dd'))document.querySelectorAll('.dd-btn').forEach(function(x){x.setAttribute('aria-expanded','false')});});
+document.addEventListener('keydown',function(e){if(e.key!=='Escape')return;var o=document.querySelector('.dd-btn[aria-expanded=true]');if(o){o.setAttribute('aria-expanded','false');o.focus();return;}if(n.classList.contains('is-open')){s(false);b.focus();}});
+matchMedia('(min-width:1100px)').addEventListener('change',function(m){if(m.matches)s(false)});
+function openHash(){var h=location.hash.slice(1);if(!h)return;var t=document.getElementById(h);if(t&&t.tagName==='DETAILS')t.open=true;else if(t){var d=t.closest('details');if(d)d.open=true;}}
+window.addEventListener('hashchange',openHash);openHash();})();</script>
+<dialog class="lb" id="lb" aria-label="Prohlížení fotografií"><figure class="lb-fig"><img id="lb-img" alt=""><figcaption id="lb-cap"></figcaption></figure>
+<button class="lb-btn lb-prev" type="button" id="lb-prev"><span class="sr-only">Předchozí fotografie</span><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="m15 5-7 7 7 7"/></svg></button>
+<button class="lb-btn lb-next" type="button" id="lb-next"><span class="sr-only">Další fotografie</span><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="m9 5 7 7-7 7"/></svg></button>
+<button class="lb-btn lb-close" type="button" id="lb-close"><span class="sr-only">Zavřít prohlížení</span><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+<p class="lb-count" id="lb-count" aria-live="polite"></p></dialog>
+<script>(function(){var d=document.getElementById('lb');if(!d||!d.showModal)return;var im=document.getElementById('lb-img'),cap=document.getElementById('lb-cap'),cnt=document.getElementById('lb-count'),set=[],i=0,last=null;
+function show(){var a=set[i];im.src=a.getAttribute('href');im.alt=a.dataset.alt||'';cap.textContent=a.dataset.cap||'';cnt.textContent=(i+1)+' / '+set.length;}
+document.addEventListener('click',function(e){var a=e.target.closest('a[data-lb]');if(!a)return;e.preventDefault();set=[].slice.call(document.querySelectorAll('a[data-lb="'+a.dataset.lb+'"]'));i=set.indexOf(a);last=a;show();d.showModal();});
+function mv(k){i=(i+k+set.length)%set.length;show();}
+document.getElementById('lb-prev').onclick=function(){mv(-1)};document.getElementById('lb-next').onclick=function(){mv(1)};document.getElementById('lb-close').onclick=function(){d.close()};
+d.addEventListener('keydown',function(e){if(e.key==='ArrowLeft')mv(-1);if(e.key==='ArrowRight')mv(1);});
+d.addEventListener('click',function(e){if(e.target===d)d.close();});d.addEventListener('close',function(){if(last)last.focus();});})();</script>
+
+</body>
+</html>
