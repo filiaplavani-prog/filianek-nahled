@@ -1,0 +1,352 @@
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Filia – kurzy plavání pro miminka, batolata a předškoláky v Brně</title>
+<meta name="description" content="Plavání kojenců, batolat a dětí předškolního věku s rodiči, plavání miminek ve vaně, letní kurzy a solná jeskyně v Brně-Lesné.">
+<meta name="theme-color" content="#0077B6">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Nunito:wght@400;600;700;800&display=swap">
+<style>:root{--bg:#F2FAFD;--ink:#1F2D52;--ink-soft:#3A4A72;--head:#03045E;--line:#D5EEF6;--link:#005A8C;--focus:#00B4D8;--hdr-bg:rgba(255,255,255,.96);--hdr-line:#D5EEF6;--dd-bg:#FFFFFF;--nav-font:600 .95rem/1 'Poppins',sans-serif;--nav-ink:#03045E;--nav-ink-h:#03045E;--nav-hover:#E3F5FB;--btn-font:800 .86rem/1 'Nunito',sans-serif;--btn-bg:#0077B6;--btn-fg:#FFFFFF;--btn-bg-h:#03045E;--btn-fg-h:#FFFFFF;--ghost-fg:#03045E;--ghost-line:#0077B6;--ghost-bg-h:#CAF0F8;--ghost-fg-h:#03045E}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;scroll-padding-top:96px}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 1.0625rem/1.62 var(--f-body);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{max-width:100%;height:auto;display:block}
+h1,h2,h3{font-family:var(--f-head);color:var(--head);margin:0 0 .5em;line-height:1.15}
+p{margin:0 0 1em}
+a{color:var(--link)}
+.wrap{max-width:1240px;margin-inline:auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.skip{position:absolute;left:-999px;top:8px;background:#fff;color:#000;padding:10px 16px;border-radius:12px;z-index:200}
+.skip:focus{left:16px}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+:focus-visible{outline:3px solid var(--focus);outline-offset:3px;border-radius:6px}
+.ico{width:1.25em;height:1.25em;flex:none}
+/* hlavička */
+.hdr{position:sticky;top:0;z-index:60;background:var(--hdr-bg);backdrop-filter:saturate(1.4) blur(10px);border-bottom:1px solid var(--hdr-line)}
+.hdr .bar{display:flex;align-items:center;gap:18px;min-height:78px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--head);min-width:0}
+.nav{margin-left:auto}
+.nav>ul{list-style:none;margin:0;padding:0;display:flex;align-items:center;gap:2px}
+.nav a,.dd-btn{display:flex;align-items:center;gap:6px;padding:10px 13px;border-radius:999px;font:var(--nav-font);color:var(--nav-ink);text-decoration:none;white-space:nowrap;background:none;border:0;cursor:pointer}
+.nav a:hover,.dd-btn:hover,.nav a[aria-current=page],.dd-btn.is-cur{background:var(--nav-hover);color:var(--nav-ink-h)}
+.dd-btn .ico{width:16px;height:16px;transition:transform .2s}
+.dd-btn[aria-expanded=true] .ico{transform:rotate(180deg)}
+.has-dd{position:relative}
+.dd{list-style:none;margin:0;padding:8px;position:absolute;top:calc(100% + 8px);left:0;min-width:290px;background:var(--dd-bg);border:1px solid var(--hdr-line);border-radius:18px;box-shadow:0 24px 48px -24px rgba(0,0,0,.35);display:none}
+.dd-btn[aria-expanded=true]+.dd{display:block}
+.dd a{border-radius:12px;padding:11px 14px;white-space:normal}
+.nav .cta{margin-left:6px}
+.menu-btn{display:none;margin-left:auto;width:48px;height:48px;border:0;border-radius:14px;background:var(--nav-hover);color:var(--nav-ink-h);cursor:pointer;place-items:center}
+.menu-btn svg{width:24px;height:24px}
+@media (max-width:1179px){
+ .menu-btn{display:grid}
+ .hdr{backdrop-filter:none;-webkit-backdrop-filter:none;background:var(--dd-bg)}
+ .nav{position:fixed;inset:79px 0 0 0;background:var(--dd-bg);padding:12px max(16px,env(safe-area-inset-right)) 28px max(16px,env(safe-area-inset-left));overflow-y:auto;visibility:hidden;opacity:0;transform:translateY(-8px);transition:opacity .2s,transform .2s,visibility 0s .2s}
+ .nav.is-open{visibility:visible;opacity:1;transform:none;transition:opacity .2s,transform .2s}
+ .nav>ul{flex-direction:column;align-items:stretch;gap:0}
+ .nav a,.dd-btn{font-size:1.08rem;padding:16px 6px;border-radius:0;border-bottom:1px solid var(--hdr-line);width:100%;justify-content:space-between}
+ .dd{position:static;display:none;box-shadow:none;border:0;padding:0 0 8px 12px;min-width:0;background:transparent}
+ .dd a{border-bottom:1px solid var(--hdr-line);padding:14px 6px;font-size:1rem}
+ .nav .cta{margin:18px 0 0;justify-content:center;border-radius:999px;border:0}
+ body.menu-open{overflow:hidden}
+}
+/* tlačítka */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 26px;border-radius:999px;font:var(--btn-font);letter-spacing:.06em;text-transform:uppercase;text-decoration:none;background:var(--btn-bg);color:var(--btn-fg);border:2px solid var(--btn-bg);transition:transform .2s,background .2s,color .2s;cursor:pointer;text-align:center}
+.btn:hover{transform:translateY(-2px);background:var(--btn-bg-h);border-color:var(--btn-bg-h);color:var(--btn-fg-h)}
+.btn:active{transform:none}
+.btn-ghost{background:transparent;color:var(--ghost-fg);border-color:var(--ghost-line)}
+.btn-ghost:hover{background:var(--ghost-bg-h);color:var(--ghost-fg-h);border-color:var(--ghost-bg-h)}
+.btn .ico{width:18px;height:18px}
+.btns{display:flex;flex-wrap:wrap;gap:12px;margin-top:22px}
+a.ext::after{content:"\2197";font-size:.9em;margin-left:3px}
+.btn.ext::after{margin-left:0}
+main{display:block;padding-bottom:64px}
+.crumbs{margin:18px 0 0;font-size:.95rem;color:var(--ink-soft)}
+.crumbs a{color:var(--ink-soft)}
+.crumbs.wrap{margin:18px auto 0}
+.prose{max-width:70ch}
+.prose p:last-child{margin-bottom:0}
+.list{margin:0;padding-left:1.2em}.list li{margin:.35em 0}
+.tbl-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;border-radius:16px;border:1px solid var(--line)}
+.tbl{width:100%;border-collapse:collapse;font-size:1rem}
+.tbl th,.tbl td{padding:12px 14px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+.tbl thead th{font-size:.74rem;letter-spacing:.08em;text-transform:uppercase}
+.tbl tr:last-child th,.tbl tr:last-child td{border-bottom:0}
+details>summary{cursor:pointer;list-style:none}
+details>summary::-webkit-details-marker{display:none}
+/* lightbox */
+.lb{border:0;padding:0;background:transparent;max-width:100vw;max-height:100vh;width:100vw;height:100vh;margin:0}
+.lb::backdrop{background:rgba(4,8,18,.92)}
+.lb[open]{display:grid;place-items:center}
+.lb-fig{margin:0;display:grid;gap:10px;justify-items:center;max-width:min(1100px,92vw)}
+.lb-fig img{max-height:78vh;width:auto;border-radius:12px}
+.lb-fig figcaption,.lb-count{color:#E6E9EF;font-size:.95rem;text-align:center;margin:0}
+.lb-count{position:fixed;top:22px;left:22px}
+.lb-btn{position:fixed;width:52px;height:52px;border-radius:50%;border:0;background:rgba(255,255,255,.14);color:#fff;display:grid;place-items:center;cursor:pointer}
+.lb-btn:hover{background:rgba(255,255,255,.28)}
+.lb-btn svg{width:26px;height:26px}
+.lb-prev{left:16px;top:50%;transform:translateY(-50%)}.lb-next{right:16px;top:50%;transform:translateY(-50%)}.lb-close{right:16px;top:16px}
+@media (max-width:640px){.lb-prev,.lb-next{top:auto;bottom:20px;transform:none}.lb-prev{left:calc(50% - 64px)}.lb-next{right:calc(50% - 64px)}.lb-fig img{max-height:70vh}}
+
+/* Mobil: minimální velikost písma */
+@media (max-width:759px){
+  main :is(small,th,figcaption,.fcap,.n,.st,.age,.ages li,label,.kicker,.date span,time span){font-size:max(.8125rem,0px)!important}
+  .btns .btn,.btn{font-size:.875rem!important}
+  .brand-t small{font-size:.6875rem!important}
+  main dt,footer h2,.agecards span{font-size:.8125rem!important}
+}
+h1,h2,h3,h4{text-wrap:balance}p,li,dd{text-wrap:pretty}
+.nav{min-width:0}.nav>ul{flex-wrap:wrap;justify-content:flex-end;row-gap:4px}
+.strip{min-width:0;max-width:100%}.stack>*,.panel{min-width:0}
+footer *{min-width:0}footer a,footer li,footer p{overflow-wrap:anywhere}
+.strip,.tbl-wrap,.table-wrap,.subnav{position:relative}
+
+.site-filia{--f-head:"Poppins","Segoe UI",system-ui,sans-serif;--f-body:"Nunito","Segoe UI",system-ui,sans-serif}
+.site-filia h1{font-weight:700;font-size:clamp(2.2rem,1.4rem + 2.8vw,3.5rem);letter-spacing:-.02em;line-height:1.06}
+.site-filia h2{font-weight:700;font-size:clamp(1.45rem,1.15rem + 1.2vw,2rem);letter-spacing:-.01em}
+.site-filia h3{font-weight:600;font-size:1.15rem}
+.brand-logo{width:auto;height:58px}
+.brand-t{display:grid;line-height:1.15}
+.brand-t b{font:700 1.02rem var(--f-head);color:#03045E;letter-spacing:.02em}
+.brand-t small{font:800 .66rem var(--f-body);letter-spacing:.12em;text-transform:uppercase;color:#005A8C}
+.nav .cta a{background:#03045E;color:#fff;padding:14px 20px;font:800 .8rem/1 var(--f-body);letter-spacing:.07em;text-transform:uppercase}
+.nav .cta a:hover{background:#0077B6;color:#fff}
+.nav .cta-soft a{background:#CAF0F8;color:#03045E;padding:14px 18px;font:800 .8rem/1 var(--f-body);letter-spacing:.07em;text-transform:uppercase;gap:8px}
+.nav .cta-soft a:hover{background:#90E0EF;color:#03045E}
+.nav .cta-soft .ico{width:18px;height:18px}
+@media (max-width:1179px){.nav .cta a,.nav .cta-soft a{justify-content:center;border-radius:999px;margin-top:12px;border:0;min-height:52px}}
+.eyebrow{font:800 .78rem/1.3 var(--f-body);letter-spacing:.14em;text-transform:uppercase;color:#005A8C;margin:0 0 12px}
+.lead{font-size:1.15rem;color:var(--ink-soft);max-width:56ch}
+/* hero */
+.fi-hero{position:relative;margin-top:18px;border-radius:32px;background:linear-gradient(135deg,#CAF0F8 0%,#E8F8FC 50%,#F7FDFF 100%);overflow:hidden;isolation:isolate}
+.fi-hero-in{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1.1fr);gap:28px;align-items:center;padding:clamp(28px,4.5vw,60px) clamp(22px,4.5vw,60px) clamp(56px,7vw,92px)}
+.blob{position:relative}
+.blob img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:38% 62% 30% 70%/46% 38% 62% 54%;box-shadow:0 30px 60px -34px rgba(3,4,94,.55)}
+.bubble{position:absolute;right:-6px;top:6%;width:132px;height:132px;border-radius:50%;background:#fff;color:#03045E;display:grid;place-items:center;text-align:center;font:700 .98rem/1.25 var(--f-head);box-shadow:0 16px 30px -18px rgba(3,4,94,.5);transform:rotate(-8deg);padding:14px}
+.bubble small{display:block;font:800 .66rem var(--f-body);letter-spacing:.1em;text-transform:uppercase;color:#005A8C}
+.fi-hero .wave{position:absolute;left:0;right:0;bottom:-1px;width:100%;height:70px;color:#fff;z-index:-1}
+.dots{position:absolute;pointer-events:none;z-index:-1}
+.dots i{position:absolute;border-radius:50%;background:radial-gradient(circle at 35% 35%,#fff,#90E0EF 70%);opacity:.8}
+@media (max-width:860px){.fi-hero-in{grid-template-columns:minmax(0,1fr)}.blob{order:-1;max-width:520px}.bubble{width:104px;height:104px;font-size:.82rem;right:0}}
+/* pruh výhod */
+.quick-go{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-top:22px;padding:14px 18px;border-radius:22px;background:#fff;box-shadow:0 18px 40px -32px rgba(3,4,94,.4)}
+.quick-go b{margin-right:6px;font:600 1rem var(--f-head);color:#03045E}
+.quick-go a{display:inline-flex;align-items:center;gap:8px;min-height:44px;border-radius:999px;padding:0 16px;background:#CAF0F8;color:#03045E;font:600 .95rem var(--f-head);text-decoration:none}
+.quick-go a:hover{background:#90E0EF}
+.perks{margin:-36px auto 0;position:relative;z-index:2;background:#fff;border-radius:24px;box-shadow:0 24px 50px -34px rgba(3,4,94,.45);display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:4px;padding:14px;list-style:none;width:calc(100% - 2*clamp(0px,3vw,40px))}
+.perks li{display:flex;gap:14px;align-items:center;padding:12px 14px}
+.perks .ib{width:54px;height:54px;border-radius:50%;background:#CAF0F8;color:#0077B6;display:grid;place-items:center;flex:none}
+.perks .ib .ico{width:28px;height:28px}
+.perks b{display:block;font:600 1rem/1.25 var(--f-head);color:#03045E}
+.perks span{font-size:.92rem;color:var(--ink-soft)}
+@media (max-width:980px){.perks{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:520px){.perks{grid-template-columns:minmax(0,1fr)}}
+/* sekce */
+.sec{margin-top:28px;background:#fff;border-radius:26px;padding:clamp(22px,3vw,36px);box-shadow:0 18px 40px -32px rgba(3,4,94,.4)}
+.sec-t{background:linear-gradient(160deg,#E3F5FB 0%,#F4FBFE 100%)}
+.sec-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:8px 24px;margin-bottom:18px}
+.sec-head h2{margin:0}
+.sec-head p{margin:0;color:var(--ink-soft)}
+.sec-head a{font-weight:800;color:#005A8C}
+.cols{display:grid;gap:22px;grid-template-columns:repeat(3,minmax(0,1fr))}
+.cols-2{display:grid;gap:22px;grid-template-columns:repeat(2,minmax(0,1fr))}
+.cols>.sec,.cols-2>.sec{margin-top:0}
+.cols>*,.cols-2>*,.split>*,.phead-in>*,.fi-hero-in>*{min-width:0}
+@media (max-width:980px){.cols{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:760px){.cols-2{grid-template-columns:minmax(0,1fr)}}
+/* karty nabídky */
+.offers{display:grid;gap:16px;grid-template-columns:repeat(4,minmax(0,1fr))}
+@media (max-width:1100px){.offers{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:560px){.offers{grid-template-columns:minmax(0,1fr)}}
+.offer{background:#F2FAFD;border-radius:22px;overflow:hidden;display:flex;flex-direction:column;text-decoration:none;color:var(--ink);border:1px solid #D5EEF6;transition:transform .2s,box-shadow .2s}
+.offer:hover{transform:translateY(-3px);box-shadow:0 20px 40px -28px rgba(3,4,94,.5)}
+.offer img{width:100%;aspect-ratio:4/3;object-fit:cover}
+.offer-b{padding:16px 18px 18px;display:flex;flex-direction:column;gap:6px;flex:1}
+.offer-b h3{margin:0;color:#03045E}
+.offer-b .age{font:800 .8rem var(--f-body);color:#005A8C;letter-spacing:.02em}
+.offer-b p{margin:0;color:var(--ink-soft);font-size:.98rem}
+.offer-b .go{margin-top:auto;align-self:flex-end;width:40px;height:40px;border-radius:50%;background:#00B4D8;color:#03045E;display:grid;place-items:center}
+.offer-b .go .ico{width:20px;height:20px}
+/* termíny */
+.terms{list-style:none;margin:0;padding:0;display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(min(100%,140px),1fr))}
+.terms li{border-radius:18px;padding:14px 16px;background:#F2FAFD;border:1px solid #D5EEF6}
+.terms li.is-now{background:#03045E;border-color:#03045E;color:#fff}
+.terms li.is-past{opacity:.7}
+.terms b{display:block;font:600 1.05rem var(--f-head);color:inherit}
+.terms .n{font:800 .72rem var(--f-body);letter-spacing:.1em;text-transform:uppercase;color:#005A8C}
+.terms li.is-now .n{color:#90E0EF}
+.terms span{display:block;font-size:.92rem}
+.terms .st{margin-top:6px;font:800 .72rem var(--f-body);letter-spacing:.08em;text-transform:uppercase}
+.price{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));list-style:none;margin:0;padding:0}
+.price li{border-radius:20px;padding:18px 20px;background:#fff;border:2px solid #CAF0F8}
+.price b{display:block;font:700 1.7rem/1.1 var(--f-head);color:#03045E}
+.price span{color:var(--ink-soft)}
+.facts{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));margin:0}
+.fact{background:#F2FAFD;border-radius:18px;padding:16px 18px;margin:0;display:flex;gap:14px;border:1px solid #D5EEF6}
+.fact .ico{width:26px;height:26px;color:#0077B6;margin-top:2px}
+.fact dt{font:800 .72rem var(--f-body);letter-spacing:.1em;text-transform:uppercase;color:#005A8C;margin-bottom:4px}
+.fact dd{margin:0;font:600 1.05rem/1.4 var(--f-head);color:#03045E}
+.fact dd small{display:block;font:400 .95rem/1.45 var(--f-body);color:var(--ink-soft);margin-top:4px}
+.fact dd a{color:#03045E;display:inline-block;padding:9px 0}
+.chk a{display:inline-block;padding:9px 0}
+.split{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:28px;align-items:center}
+.split>img,.split figure img{border-radius:24px;width:100%;aspect-ratio:4/3;object-fit:cover}
+.split figure{margin:0}
+@media (max-width:860px){.split{grid-template-columns:minmax(0,1fr)}}
+.steps{list-style:none;margin:0;padding:0;counter-reset:s;display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr))}
+.steps li{counter-increment:s;background:#F2FAFD;border-radius:20px;padding:18px 18px 18px 72px;position:relative;border:1px solid #D5EEF6}
+.steps li::before{content:counter(s);position:absolute;left:18px;top:18px;width:40px;height:40px;border-radius:50%;background:#0077B6;color:#fff;display:grid;place-items:center;font:700 1.05rem var(--f-head)}
+.steps b{display:block;font:600 1.05rem var(--f-head);color:#03045E}
+.steps span{color:var(--ink-soft);font-size:1rem}
+.rules{list-style:none;margin:0;padding:0;counter-reset:r;display:grid;gap:10px}
+.rules li{counter-increment:r;display:grid;grid-template-columns:44px minmax(0,1fr);gap:14px;align-items:start;background:#F2FAFD;border-radius:16px;padding:14px 16px;border:1px solid #D5EEF6}
+.rules li::before{content:counter(r);width:44px;height:44px;border-radius:14px;background:#CAF0F8;color:#03045E;display:grid;place-items:center;font:700 1.05rem var(--f-head)}
+.chk{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.chk li{display:flex;gap:10px;align-items:flex-start}
+.chk .ico{color:#0077B6;margin-top:3px}
+.docs{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.docs a{display:flex;gap:12px;align-items:center;color:#03045E;text-decoration:none;padding:12px 14px;border-radius:14px;background:#F2FAFD;border:1px solid #D5EEF6;font-weight:700}
+.docs a:hover{background:#CAF0F8}
+.docs .ico{color:#0077B6}
+.docs small{display:block;font-weight:400;color:var(--ink-soft);font-size:.86rem}
+.quick{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.quick a{display:flex;gap:14px;align-items:center;padding:12px 14px;border-radius:16px;text-decoration:none;color:#03045E;background:#F2FAFD;border:1px solid #D5EEF6}
+.quick a:hover{background:#CAF0F8}
+.quick .ib{width:44px;height:44px;border-radius:12px;background:#fff;color:#0077B6;display:grid;place-items:center;flex:none}
+.quick b{display:block;font:600 1rem var(--f-head)}
+.quick small{color:var(--ink-soft)}
+.news{list-style:none;margin:0;padding:0;display:grid;gap:12px}
+.news li{display:grid;grid-template-columns:74px minmax(0,1fr);gap:14px;align-items:start}
+.news time{display:grid;place-items:center;text-align:center;border-radius:16px;background:#CAF0F8;color:#03045E;padding:10px 6px;font:700 1.25rem/1 var(--f-head)}
+.news time small{display:block;font:800 .66rem var(--f-body);letter-spacing:.08em;text-transform:uppercase;margin-top:4px;color:#005A8C}
+.news b{display:block;font:600 1.02rem var(--f-head);color:#03045E}
+.news p{margin:2px 0 0;color:var(--ink-soft);font-size:.98rem}
+.news-full li{background:#fff;border-radius:20px;padding:16px;border:1px solid #D5EEF6}
+.band{position:relative;margin-top:32px;border-radius:30px;overflow:hidden;background:#0077B6;color:#fff;isolation:isolate;min-height:220px;display:grid;align-items:center}
+.band>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2}
+.band::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(3,4,94,.15) 0%,rgba(0,119,182,.55) 45%,rgba(3,4,94,.88) 100%)}
+.band-in{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:22px;align-items:center;padding:clamp(22px,4vw,44px)}
+.band q{font:italic 600 clamp(1.3rem,1rem + 1.4vw,2rem)/1.3 var(--f-head);quotes:none;color:#fff;text-shadow:0 2px 12px rgba(3,4,94,.5);max-width:24ch}
+.band .call{display:flex;gap:14px;align-items:center;background:#fff;color:#03045E;border-radius:999px;padding:12px 22px 12px 12px;text-decoration:none;box-shadow:0 18px 36px -20px rgba(3,4,94,.7)}
+.band .call .ib{width:52px;height:52px;border-radius:50%;background:#CAF0F8;color:#0077B6;display:grid;place-items:center}
+.band .call b{display:block;font:700 1.05rem var(--f-head)}
+.band .call span{font-weight:800;color:#005A8C}
+@media (max-width:760px){.band-in{grid-template-columns:minmax(0,1fr)}.band::before{background:linear-gradient(180deg,rgba(0,119,182,.4) 0%,rgba(3,4,94,.9) 100%)}}
+.phead{margin-top:18px;position:relative;border-radius:30px;overflow:hidden;background:linear-gradient(135deg,#CAF0F8 0%,#E8F8FC 60%,#fff 100%);isolation:isolate}
+.phead-in{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);gap:24px;align-items:center;padding:clamp(24px,4vw,48px) clamp(22px,4vw,48px) clamp(48px,6vw,72px)}
+.phead h1{font-size:clamp(2rem,1.4rem + 2.2vw,3rem)}
+.phead .lead{margin:0}
+.phead .blob img{aspect-ratio:4/3}
+.phead .wave{position:absolute;left:0;right:0;bottom:-1px;width:100%;height:56px;color:var(--bg);z-index:-1}
+@media (max-width:760px){.phead-in{grid-template-columns:minmax(0,1fr)}.phead .blob{order:-1;max-width:420px}}
+.subnav{display:flex;gap:8px;overflow-x:auto;margin-top:16px;padding-bottom:4px}
+.subnav a{flex:none;background:#fff;border:1px solid #D5EEF6;border-radius:999px;padding:10px 16px;font:600 .95rem var(--f-head);color:#03045E;text-decoration:none;white-space:nowrap}
+.subnav a:hover,.subnav a[aria-current=page]{background:#CAF0F8}
+.site-filia .tbl{background:#fff}
+.site-filia .tbl thead th{background:#CAF0F8;color:#03045E;font-weight:800}
+.site-filia .tbl tbody th{font:600 1rem var(--f-head);color:#03045E}
+.site-filia .tbl td{color:var(--ink)}
+.site-filia .tbl td:last-child{font-weight:700;color:#03045E;white-space:nowrap}
+.note{margin-top:16px;padding:16px 18px;border-radius:16px;background:#E3F5FB;border-left:5px solid #0077B6}
+.note p{margin:0}
+.mosaic{display:grid;gap:12px;grid-template-columns:2fr 1fr 1fr;grid-template-rows:1fr 1fr}
+.mosaic a:first-child{grid-row:1/3}
+.mosaic a{display:block;border-radius:18px;overflow:hidden}
+.mosaic img{width:100%;height:100%;object-fit:cover;aspect-ratio:4/3;transition:transform .3s}
+.mosaic a:first-child img{aspect-ratio:auto}
+.mosaic a:hover img{transform:scale(1.04)}
+@media (max-width:640px){.mosaic{grid-template-columns:1fr 1fr;grid-template-rows:auto}.mosaic a:first-child{grid-column:1/3;grid-row:auto}.mosaic a:first-child img{aspect-ratio:4/3}}
+.thumbs{list-style:none;margin:0;padding:0;display:grid;gap:10px;grid-template-columns:repeat(auto-fill,minmax(min(46%,170px),1fr))}
+.thumbs a{display:block;border-radius:14px;overflow:hidden}
+.thumbs img{width:100%;aspect-ratio:1;object-fit:cover;transition:transform .3s}
+.thumbs a:hover img{transform:scale(1.05)}
+.albums{list-style:none;margin:0;padding:0;display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(min(100%,230px),1fr))}
+.albums a{display:block;border-radius:18px;overflow:hidden;background:#F2FAFD;color:#03045E;text-decoration:none;border:1px solid #D5EEF6}
+.albums img{width:100%;aspect-ratio:3/2;object-fit:cover}
+.albums span{display:block;padding:12px 14px;font:600 1.02rem var(--f-head)}
+.albums small{display:block;font:400 .86rem var(--f-body);color:var(--ink-soft)}
+.timeline{list-style:none;margin:0;padding:0;display:grid;gap:10px;position:relative}
+.timeline li{display:grid;grid-template-columns:96px minmax(0,1fr);gap:16px;align-items:start;background:#F2FAFD;border-radius:18px;padding:14px 18px;border:1px solid #D5EEF6}
+.timeline .y{font:700 1.2rem var(--f-head);color:#0077B6}
+.timeline b{display:block;font:600 1.02rem var(--f-head);color:#03045E}
+.timeline span{color:var(--ink-soft)}
+@media (max-width:520px){.timeline li{grid-template-columns:minmax(0,1fr);gap:4px}}
+.contacts{list-style:none;margin:0;padding:0;display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr))}
+.contacts li{background:#F2FAFD;border-radius:18px;padding:18px;border:1px solid #D5EEF6}
+.contacts small{display:block;font:800 .72rem var(--f-body);letter-spacing:.1em;text-transform:uppercase;color:#005A8C}
+.contacts b{display:block;font:600 1.12rem var(--f-head);color:#03045E;margin:4px 0 6px}
+.contacts a{color:#03045E;font-weight:700;display:inline-block;padding:10px 0}
+.art{max-width:760px;margin-inline:auto}
+.art .prose{max-width:none;font-size:1.1rem}
+.art .prose h2{font-size:1.4rem;margin:1.4em 0 .5em}
+.art .prose ol,.art .prose ul{padding-left:1.3em}
+.art .prose li{margin:.5em 0}
+.art .prose li b{color:#03045E}
+.articles{display:grid;gap:16px;grid-template-columns:repeat(3,minmax(0,1fr))}
+@media (max-width:900px){.articles{grid-template-columns:minmax(0,1fr)}}
+.acc{display:grid;gap:10px}
+.acc details{border-radius:16px;background:#F2FAFD;border:1px solid #D5EEF6}
+.acc summary{display:flex;justify-content:space-between;gap:12px;align-items:center;padding:16px 18px;font:600 1.02rem var(--f-head);color:#03045E}
+.acc summary .ico{transition:transform .2s;color:#0077B6}
+.acc details[open] summary .ico{transform:rotate(180deg)}
+.acc .a{padding:0 18px 16px}
+.fcap{font-size:.86rem;color:var(--ink-soft);margin:8px 0 0}
+/* patička */
+.ftr{position:relative;margin-top:40px;background:#03045E;color:#CAF0F8;padding:64px 0 28px}
+.ftr .wave{position:absolute;left:0;right:0;top:-55px;width:100%;height:56px;color:#03045E}
+.ftr a{color:#fff}
+.ftr-grid{display:grid;grid-template-columns:minmax(0,1.3fr) repeat(3,minmax(0,1fr));gap:28px}
+.ftr h2{font:800 .74rem var(--f-body);letter-spacing:.12em;text-transform:uppercase;color:#90E0EF;margin:0 0 12px}
+.ftr ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.ftr-logo{background:#fff;border-radius:18px;padding:8px 12px;display:inline-block}
+.ftr-logo img{height:64px;width:auto}
+.ftr-bottom{border-top:1px solid rgba(255,255,255,.18);margin-top:28px;padding-top:18px;font-size:.92rem;display:flex;flex-wrap:wrap;gap:8px 20px;justify-content:space-between}
+@media (max-width:900px){.ftr-grid{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}}
+@media (max-width:560px){.ftr-grid{grid-template-columns:minmax(0,1fr)}}
+</style>
+</head>
+<body class="site-filia">
+<a class="skip" href="#obsah">Přeskočit na obsah</a>
+<header class="hdr"><div class="wrap bar">
+<a class="brand" href="index.html" aria-label="Filia – úvod"><img class="brand-logo" src="img/filia/logo-filia.png" alt="" width="228" height="194"><span class="brand-t"><b>FILIA KLUB</b><small>Plavání a solná jeskyně</small></span></a>
+<button class="menu-btn" id="menu-btn" type="button" aria-expanded="false" aria-controls="site-nav"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg><span class="sr-only">Menu</span></button>
+<nav class="nav" id="site-nav" aria-label="Hlavní menu Filia"><ul><li class="has-dd"><button class="dd-btn" type="button" aria-expanded="false" aria-controls="dd-plavani">Plavání<svg class="ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></button><ul class="dd" id="dd-plavani"><li><a href="filia-plavani.html">Plavání dětí – přehled</a></li><li><a href="filia-kurzy.html">Plavání kojenců, batolat a malých předškoláků</a></li><li><a href="filia-registrace.html">Registrace, omluvy a náhrady lekcí</a></li><li><a href="filia-letni.html">Letní intenzivní kurzy</a></li><li><a href="filia-plavani.html#tabory">Příměstské tábory s plaváním</a></li><li><a href="filia-vana.html">Plavání miminek doma ve vaně</a></li></ul></li><li class="has-dd"><button class="dd-btn" type="button" aria-expanded="false" aria-controls="dd-jeskyne">Solná jeskyně<svg class="ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></button><ul class="dd" id="dd-jeskyne"><li><a href="filia-solna-jeskyne.html">Solná jeskyně – přehled</a></li><li><a href="filia-solna-jeskyne.html#vstupy">Vstupy a permanentky</a></li><li><a href="filia-solna-jeskyne.html#skolky">Pro školky a skupiny</a></li><li><a href="filia-solna-jeskyne.html#nahrady">Náhrady za plavání</a></li></ul></li><li><a href="filia-aktuality.html">Aktuality</a></li><li class="has-dd"><button class="dd-btn" type="button" aria-expanded="false" aria-controls="dd-klub">O klubu<svg class="ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></button><ul class="dd" id="dd-klub"><li><a href="filia-o-klubu.html">O klubu a historie</a></li><li><a href="filia-fotogalerie.html">Fotogalerie</a></li><li><a href="filia-o-klubu.html#partneri">Partneři</a></li><li><a href="filia-clanky.html">Články pro rodiče</a></li></ul></li><li><a href="filia-kontakt.html">Kontakt</a></li><li class="cta-soft"><a href="https://filia.auksys.com/" target="_blank" rel="noopener"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5" width="17" height="15" rx="2.5"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg>Auksys<span class="sr-only"> (rezervační a náhradový systém, otevře se v novém okně)</span></a></li><li class="cta"><a href="tel:+420602878062">Volat 602 878 062</a></li></ul></nav>
+</div></header>
+<main id="obsah">
+<div class="wrap"><section class="fi-hero" aria-labelledby="h1"><div class="fi-hero-in"><div><p class="eyebrow">Plavecký klub v Brně-Lesné</p><h1 id="h1">Radostné plavání od prvních krůčků</h1><p class="lead">Kurzy plavání s rodiči pro děti od 6 měsíců do 7 let a plavání miminek doma ve vaně. Respektujeme tempo každého dítěte a budujeme jeho pozitivní vztah k vodě.</p><div class="btns"><a class="btn" href="tel:+420602878062"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 3.5h3.2l1.6 4.2-2.1 1.4a11.5 11.5 0 0 0 7.2 7.2l1.4-2.1 4.2 1.6V19a1.6 1.6 0 0 1-1.6 1.6A16.6 16.6 0 0 1 3.4 5.1 1.6 1.6 0 0 1 5 3.5z"/></svg>Zařazení: 602 878 062</a><a class="btn btn-ghost ext" href="https://filia.auksys.com/" target="_blank" rel="noopener">Přejít do Auksysu<span class="sr-only"> (náhradový systém, otevře se v novém okně)</span></a></div></div><div class="blob"><img src="img/filia/hero-pod-vodou.jpg" alt="Miminko s míčkem plave pod vodou" width="800" height="600" fetchpriority="high"><p class="bubble"><span><small>Sezóna</small>34.<br>od 31. 8. 2026</span></p></div></div><svg class="wave" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true"><path d="M0 64c120-34 240-34 360 0s240 34 360 0 240-34 360 0 240 34 360 0v56H0z" fill="currentColor"/></svg></section><ul class="perks"><li><span class="ib"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="17" cy="6.5" r="2"/><path d="M3 14.5c1.5-1.2 3-1.2 4.5 0s3 1.2 4.5 0 3-1.2 4.5 0 3 1.2 4.5 0M3 19c1.5-1.2 3-1.2 4.5 0s3 1.2 4.5 0 3-1.2 4.5 0 3 1.2 4.5 0"/><path d="m6 11.5 4-3.5 3.5 3"/></svg></span><span><b>Plavání s rodiči</b><span>od 6 měsíců do 7 let</span></span></li><li><span class="ib"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 4a2 2 0 0 1 4 0v9.5a4 4 0 1 1-4 0z"/><path d="M12 10v6"/></svg></span><span><b>Teplá voda 32 °C</b><span>pro starší děti 30 °C</span></span></li><li><span class="ib"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="3.5"/><path d="m6 6 3.5 3.5M18 6l-3.5 3.5M6 18l3.5-3.5M18 18l-3.5-3.5"/></svg></span><span><b>Školení instruktoři</b><span>skupiny podle věku</span></span></li><li><span class="ib"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19c-3-2-4.5-5-4.5-8.5C9.5 11.5 11 13 12 15c1-2 2.5-3.5 4.5-4.5 0 3.5-1.5 6.5-4.5 8.5z"/><path d="M7.5 13C5 12.5 3.5 11 3 9c2.5 0 4 .8 5 2M16.5 13c2.5-.5 4-2 4.5-4-2.5 0-4 .8-5 2M4 19h16"/></svg></span><span><b>Solná jeskyně</b><span>pro celou rodinu</span></span></li></ul><nav class="quick-go" aria-label="Rychlé pokračování"><b>Rychle na:</b><a href="filia-plavani.html">Plavání dětí<svg class="ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><a href="filia-kurzy.html">Kurzy a ceník<svg class="ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><a href="filia-solna-jeskyne.html">Solná jeskyně<svg class="ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><a href="filia-solna-jeskyne.html#skolky">Solná jeskyně pro školky a skupiny<svg class="ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></nav><section class="sec" aria-labelledby="nabdkapodlevku-t"><div class="sec-head"><h2 id="nabdkapodlevku-t">Nabídka podle věku</h2><p><a href="filia-plavani.html">Vše o plavání dětí</a></p></div><div class="offers"><a class="offer" href="filia-vana.html"><img src="img/filia/vana.jpg" alt="Novorozenec v teplé vodě v náručí rodiče" width="800" height="600" loading="lazy" decoding="async"><div class="offer-b"><h3>Miminka ve vaně</h3><span class="age">od 6 týdnů do 3–4 měsíců</span><p>Ukázková lekce plavání doma ve vaně s instruktorem, asi 60 minut.</p><span class="go"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div></a><a class="offer" href="filia-kurzy.html"><img src="img/filia/kurz-1.jpg" alt="Rodiče s dětmi v bazénu Filia klubu" width="1200" height="800" loading="lazy" decoding="async"><div class="offer-b"><h3>Kurzy s rodiči</h3><span class="age">děti od 6 měsíců do 7 let</span><p>Kurz 7 lekcí v teplé vodě, děti jsou rozdělené do skupin podle věku.</p><span class="go"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div></a><a class="offer" href="filia-letni.html"><img src="img/filia/pod-vodou-1.jpg" alt="Batole plave pod vodou" width="800" height="600" loading="lazy" decoding="async"><div class="offer-b"><h3>Letní intenzivní kurzy</h3><span class="age">týdenní kurzy o prázdninách</span><p>5 lekcí během jednoho týdne v červenci a srpnu.</p><span class="go"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div></a><a class="offer" href="filia-plavani.html#tabory"><img src="img/filia/tabor-1.jpg" alt="Děti z tábora sedí u okraje bazénu" width="800" height="600" loading="lazy" decoding="async"><div class="offer-b"><h3>Tábory s plaváním</h3><span class="age">příměstské tábory</span><p>Léto ve Filia klubu na Lesné s rychlým rozvojem plaveckých dovedností.</p><span class="go"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div></a></div></section><section class="sec sec-t" aria-labelledby="termnykurzodz-t"><div class="sec-head"><h2 id="termnykurzodz-t">Termíny kurzů od září 2026</h2><p>Každý kurz trvá 7 týdnů · 2 900 Kč</p></div><ul class="terms" id="terms"><li class="is-past" data-start="2026-08-31" data-end="2026-10-19"><span class="n">1. kurz · v. s. 101</span><b>od 31. 8. 2026</b><span>7 týdnů</span><span class="st">Proběhlo</span></li><li class="is-now" data-start="2026-10-19" data-end="2026-12-07"><span class="n">2. kurz · v. s. 102</span><b>od 19. 10. 2026</b><span>7 týdnů</span><span class="st">Probíhá</span></li><li class="" data-start="2026-12-07" data-end="2027-02-08"><span class="n">3. kurz · v. s. 103</span><b>od 7. 12. 2026</b><span>7 týdnů</span><span class="st">Termín vypsán</span></li><li class="" data-start="2027-02-08" data-end="2027-03-29"><span class="n">4. kurz · v. s. 104</span><b>od 8. 2. 2027</b><span>7 týdnů</span><span class="st">Termín vypsán</span></li><li class="" data-start="2027-03-29" data-end="2027-05-17"><span class="n">5. kurz · v. s. 105</span><b>od 29. 3. 2027</b><span>7 týdnů</span><span class="st">Termín vypsán</span></li><li class="" data-start="2027-05-17" data-end="2027-07-05"><span class="n">6. kurz · v. s. 106</span><b>od 17. 5. 2027</b><span>7 týdnů</span><span class="st">Termín vypsán</span></li></ul><div class="btns"><a class="btn" href="filia-kurzy.html">Ceník a zápis do kurzu</a><a class="btn btn-ghost" href="mailto:filia@filia.cz?subject=Nez%C3%A1vazn%C3%BD%20dotaz%20na%20kurz%20plav%C3%A1n%C3%AD&body=Jm%C3%A9no%20d%C3%ADt%C4%9Bte%3A%0AV%C4%9Bk%20d%C3%ADt%C4%9Bte%3A%0AO%20jak%C3%BD%20kurz%20m%C3%A1te%20z%C3%A1jem%3A%0ATelefon%3A%0A"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="M3.5 6.5 12 13l8.5-6.5"/></svg>Nezávazný dotaz e-mailem</a></div></section><div class="cols"><section class="sec" aria-labelledby="aktuality-t"><div class="sec-head"><h2 id="aktuality-t">Aktuality</h2></div><ul class="news"><li><time datetime="2026-10-21">21.<small>10. 2026</small></time><div><b>Státní svátek 28. 10. 2026</b><p>Ve středu 28. 10. 2026 plaveme podle rozvrhu. Pokud nemůžete přijít, omluvte se prosím včas.</p></div></li><li><time datetime="2026-09-15">15.<small>9. 2026</small></time><div><b>Zimní pobyty s Filiánkem</b><p>Nová nabídka zimních pobytů s lyžováním je na webu Filiánku.</p></div></li><li><time datetime="2026-09-06">6.<small>9. 2026</small></time><div><b>Státní svátek 28. 9. 2026</b><p>V pondělí 28. 9. 2026 plaveme podle rozvrhu. Pokud nemůžete přijít, omluvte se prosím včas.</p></div></li></ul><div class="btns"><a class="btn btn-ghost" href="filia-aktuality.html">Všechny aktuality</a></div></section><section class="sec" aria-labelledby="solnjeskyn-t"><div class="sec-head"><h2 id="solnjeskyn-t">Solná jeskyně</h2></div><img src="img/filia/jeskyne-1.jpg" alt="Lehátka v solné jeskyni s měkkým osvětlením" width="800" height="534" loading="lazy" decoding="async" style="border-radius:18px;width:100%;aspect-ratio:16/10;object-fit:cover;margin-bottom:14px"><p>Krystaly soli z Mrtvého moře, relaxační hudba a hračky na hraní se solí jako na pískovišti. Jednorázový vstup 100 Kč, děti do 6 let s doprovodem zdarma.</p><div class="btns" style="margin-top:12px"><a class="btn" href="filia-solna-jeskyne.html">Vstupy a podmínky</a></div></section><section class="sec" aria-labelledby="rychlodkazy-t"><div class="sec-head"><h2 id="rychlodkazy-t">Rychlé odkazy</h2></div><ul class="quick"><li><a href="https://filia.auksys.com/" target="_blank" rel="noopener"><span class="ib"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5" width="17" height="15" rx="2.5"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg></span><span><b>Auksys</b><small>Omluvy a náhrady lekcí</small></span><span class="sr-only"> (otevře se v novém okně)</span></a></li><li><a href="filia-registrace.html"><span class="ib"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2.5h8l4.5 4.5V21a.5.5 0 0 1-.5.5H6a.5.5 0 0 1-.5-.5V3a.5.5 0 0 1 .5-.5z"/><path d="M14 2.5V7h4.5M9 13h6M9 17h6"/></svg></span><span><b>Desatero omluv a náhrad</b><small>Jak omlouvat a nahrazovat</small></span></a></li><li><a href="filia-kurzy.html#cenik"><span class="ib"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M14.5 9.2c-.6-.8-1.5-1.2-2.6-1.2-1.6 0-2.7.8-2.7 2s1.1 1.7 2.7 2 2.8.9 2.8 2.1-1.2 2-2.8 2c-1.2 0-2.2-.5-2.8-1.3M12 6.5V8M12 16v1.5"/></svg></span><span><b>Ceník kurzů plavání</b><small>7 lekcí, sourozenci, jednotlivá lekce</small></span></a></li><li><a href="filia-solna-jeskyne.html#vstupy"><span class="ib"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8a2 2 0 0 0 2-2h14a2 2 0 0 0 2 2v2a2 2 0 0 0 0 4v2a2 2 0 0 0-2 2H5a2 2 0 0 0-2-2v-2a2 2 0 0 0 0-4z"/><path d="M14 6v12"/></svg></span><span><b>Ceník solné jeskyně</b><small>Vstupy a permanentky</small></span></a></li><li><a href="filia-fotogalerie.html"><span class="ib"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h3l1.5-2.5h7L17 8h3a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1z"/><circle cx="12" cy="13" r="3.5"/></svg></span><span><b>Fotogalerie</b><small>Fotky z lekcí a akcí</small></span></a></li><li><a href="filia-kontakt.html"><span class="ib"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 3.5h3.2l1.6 4.2-2.1 1.4a11.5 11.5 0 0 0 7.2 7.2l1.4-2.1 4.2 1.6V19a1.6 1.6 0 0 1-1.6 1.6A16.6 16.6 0 0 1 3.4 5.1 1.6 1.6 0 0 1 5 3.5z"/></svg></span><span><b>Kontakt</b><small>Halasovo náměstí 7</small></span></a></li></ul></section></div><section class="sec" aria-labelledby="jaktounsvypad-t"><div class="sec-head"><h2 id="jaktounsvypad-t">Jak to u nás vypadá</h2></div><div class="mosaic"><a href="img/filia/bazen.jpg" data-lb="prostory" data-alt="Bazén Filia klubu s barevnými plaveckými pomůckami" data-cap="Bazén"><img src="img/filia/bazen.jpg" alt="Bazén Filia klubu s barevnými plaveckými pomůckami" width="1200" height="800" loading="lazy" decoding="async"><span class="sr-only"> – zvětšit</span></a><a href="img/filia/herna.jpg" data-lb="prostory" data-alt="Herna s matracemi a dětským koutkem" data-cap="Herna"><img src="img/filia/herna.jpg" alt="Herna s matracemi a dětským koutkem" width="1200" height="721" loading="lazy" decoding="async"><span class="sr-only"> – zvětšit</span></a><a href="img/filia/podlozky.jpg" data-lb="prostory" data-alt="Batolata na matracích v herně" data-cap="Herna po plavání"><img src="img/filia/podlozky.jpg" alt="Batolata na matracích v herně" width="1200" height="800" loading="lazy" decoding="async"><span class="sr-only"> – zvětšit</span></a><a href="img/filia/sprchy.jpg" data-lb="prostory" data-alt="Sprchy a umyvadla u bazénu" data-cap="Sprchy"><img src="img/filia/sprchy.jpg" alt="Sprchy a umyvadla u bazénu" width="800" height="534" loading="lazy" decoding="async"><span class="sr-only"> – zvětšit</span></a><a href="img/filia/recepce.jpg" data-lb="prostory" data-alt="Recepce a kuchyňka" data-cap="Recepce a kuchyňka"><img src="img/filia/recepce.jpg" alt="Recepce a kuchyňka" width="1200" height="800" loading="lazy" decoding="async"><span class="sr-only"> – zvětšit</span></a></div><p class="fcap">Bazén i prostory klubu jsou určené jen pro kurzy plavání dětí s rodiči. Hernu a jídelní koutek můžete využít zdarma.</p></section></div><div class="wrap"><section class="band" aria-label="Zařazení do kurzu plavání"><img src="img/filia/pod-vodou-2.jpg" alt="" width="800" height="600" loading="lazy" decoding="async"><div class="band-in"><q>Voda učí od prvního doteku. S respektem, hravě a s radostí.</q><a class="call" href="tel:+420602878062"><span class="ib"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 3.5h3.2l1.6 4.2-2.1 1.4a11.5 11.5 0 0 0 7.2 7.2l1.4-2.1 4.2 1.6V19a1.6 1.6 0 0 1-1.6 1.6A16.6 16.6 0 0 1 3.4 5.1 1.6 1.6 0 0 1 5 3.5z"/></svg></span><span><b>Pro rychlejší zařazení do kurzu volejte</b><span>602 878 062</span></span></a></div></section></div>
+</main>
+<footer class="ftr"><svg class="wave" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true"><path d="M0 64c120-34 240-34 360 0s240 34 360 0 240-34 360 0 240 34 360 0v56H0z" fill="currentColor"/></svg><div class="wrap"><div class="ftr-grid">
+<div><span class="ftr-logo"><img src="img/filia/logo-filia.png" alt="Filia" width="228" height="194" loading="lazy"></span>
+<p style="margin-top:14px">FILIA KLUB s.r.o. – kurzy plavání kojenců, batolat a dětí předškolního věku a solná jeskyně v Brně-Lesné od roku 1993.</p></div>
+<div><h2>Plavání</h2><ul><li><a href="filia-kurzy.html">Kurzy plavání</a></li><li><a href="filia-registrace.html">Omluvy a náhrady</a></li><li><a href="filia-letni.html">Letní intenzivní kurzy</a></li><li><a href="filia-vana.html">Plavání ve vaně</a></li><li><a href="filia-clanky.html">Články</a></li></ul></div>
+<div><h2>Klub</h2><ul><li><a href="filia-solna-jeskyne.html">Solná jeskyně</a></li><li><a href="filia-aktuality.html">Aktuality</a></li><li><a href="filia-o-klubu.html">O klubu</a></li><li><a href="filia-fotogalerie.html">Fotogalerie</a></li><li><a href="filia-kontakt.html">Kontakt</a></li></ul></div>
+<div><h2>Kontakt</h2><ul><li>Halasovo náměstí 7, Brno-Lesná</li><li><a href="tel:+420602878062">602 878 062</a></li><li><a href="mailto:filia@filia.cz">filia@filia.cz</a></li><li><a class="ext" href="https://filia.auksys.com/" target="_blank" rel="noopener">Náhradový systém Auksys<span class="sr-only"> (otevře se v novém okně)</span></a></li><li><a class="ext" href="https://www.facebook.com/pages/FILIA-Klub/127421590631620" target="_blank" rel="noopener">Facebook<span class="sr-only"> (Facebook, otevře se v novém okně)</span></a></li></ul></div>
+</div><div class="ftr-bottom"><span>© FILIA KLUB s.r.o. · Spolupracující organizace: <a href="../filianek/index.html">Filiánek, z. s.</a></span><span>Prototyp nové podoby webu filia.cz</span></div></div></footer>
+<script>(function(){var v=window.performance&&performance.getEntriesByType&&performance.getEntriesByType('navigation')[0];if(window.top!==window&&!location.hash&&v&&v.type==='navigate')document.documentElement.scrollIntoView({block:'start'});})();
+(function(){var b=document.getElementById('menu-btn'),n=document.getElementById('site-nav');if(!b||!n)return;
+function s(o){b.setAttribute('aria-expanded',o?'true':'false');b.querySelector('.sr-only').textContent=o?'Zavřít menu':'Menu';n.classList.toggle('is-open',o);document.body.classList.toggle('menu-open',o);}
+b.addEventListener('click',function(){s(b.getAttribute('aria-expanded')!=='true')});
+n.addEventListener('click',function(e){if(e.target.closest('a'))s(false)});
+document.querySelectorAll('.dd-btn').forEach(function(d){d.addEventListener('click',function(){var o=d.getAttribute('aria-expanded')!=='true';document.querySelectorAll('.dd-btn').forEach(function(x){x.setAttribute('aria-expanded','false')});d.setAttribute('aria-expanded',o?'true':'false');});});
+document.addEventListener('click',function(e){if(!e.target.closest('.has-dd'))document.querySelectorAll('.dd-btn').forEach(function(x){x.setAttribute('aria-expanded','false')});});
+document.addEventListener('keydown',function(e){if(e.key!=='Escape')return;var o=document.querySelector('.dd-btn[aria-expanded=true]');if(o){o.setAttribute('aria-expanded','false');o.focus();return;}if(n.classList.contains('is-open')){s(false);b.focus();}});
+matchMedia('(min-width:1180px)').addEventListener('change',function(m){if(m.matches)s(false)});
+function openHash(){var h=location.hash.slice(1);if(!h)return;var t=document.getElementById(h);if(t&&t.tagName==='DETAILS')t.open=true;else if(t){var d=t.closest('details');if(d)d.open=true;}}
+window.addEventListener('hashchange',openHash);openHash();})();</script>
+<dialog class="lb" id="lb" aria-label="Prohlížení fotografií"><figure class="lb-fig"><img id="lb-img" alt=""><figcaption id="lb-cap"></figcaption></figure>
+<button class="lb-btn lb-prev" type="button" id="lb-prev"><span class="sr-only">Předchozí fotografie</span><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="m15 5-7 7 7 7"/></svg></button>
+<button class="lb-btn lb-next" type="button" id="lb-next"><span class="sr-only">Další fotografie</span><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="m9 5 7 7-7 7"/></svg></button>
+<button class="lb-btn lb-close" type="button" id="lb-close"><span class="sr-only">Zavřít prohlížení</span><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+<p class="lb-count" id="lb-count" aria-live="polite"></p></dialog>
+<script>(function(){var d=document.getElementById('lb');if(!d||!d.showModal)return;var im=document.getElementById('lb-img'),cap=document.getElementById('lb-cap'),cnt=document.getElementById('lb-count'),set=[],i=0,last=null;
+function show(){var a=set[i];im.src=a.getAttribute('href');im.alt=a.dataset.alt||'';cap.textContent=a.dataset.cap||'';cnt.textContent=(i+1)+' / '+set.length;}
+document.addEventListener('click',function(e){var a=e.target.closest('a[data-lb]');if(!a)return;e.preventDefault();set=[].slice.call(document.querySelectorAll('a[data-lb="'+a.dataset.lb+'"]'));i=set.indexOf(a);last=a;show();d.showModal();});
+function mv(k){i=(i+k+set.length)%set.length;show();}
+document.getElementById('lb-prev').onclick=function(){mv(-1)};document.getElementById('lb-next').onclick=function(){mv(1)};document.getElementById('lb-close').onclick=function(){d.close()};
+d.addEventListener('keydown',function(e){if(e.key==='ArrowLeft')mv(-1);if(e.key==='ArrowRight')mv(1);});
+d.addEventListener('click',function(e){if(e.target===d)d.close();});d.addEventListener('close',function(){if(last)last.focus();});})();</script>
+<script>(function(){var t=document.getElementById('terms');if(!t)return;var now=new Date();now.setHours(0,0,0,0);
+t.querySelectorAll('li').forEach(function(li){var s=new Date(li.dataset.start),e=new Date(li.dataset.end),st=li.querySelector('.st');li.classList.remove('is-now','is-past');
+if(now>=s&&now<e){li.classList.add('is-now');st.textContent='Probíhá';}else if(now>=e){li.classList.add('is-past');st.textContent="Proběhlo";}else{st.textContent="Termín vypsán";}});})();</script>
+</body>
+</html>
